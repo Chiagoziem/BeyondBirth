@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  RegisterViewController.swift
 //  BeyondBirth
 //
 //  Created by Jordan George on 10/12/18.
@@ -8,15 +8,10 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // FIXME: - connect to firebase
-        // FIXME: - add nav bar functionality
-        // FIXME: - messages in console
-        // FIXME: - static widths/heights/constants
         
         view.backgroundColor = UIColor.lightGray
         setupViews()
@@ -24,12 +19,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - button actions
     
-    @objc func handleLoginButton() {
+    @objc func handleRegisterButton() {
         print("123")
     }
     
-    @objc func handleRegisterButton() {
-        present(RegisterViewController(), animated: true, completion: nil)
+    @objc func handleLoginButton() {
+        present(LoginViewController(), animated: true, completion: nil)
     }
     
     // MARK: - keyboard
@@ -46,7 +41,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if textField == emailTextField {
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
-            passwordTextField.resignFirstResponder()
+            repeatPasswordTextField.becomeFirstResponder()
+        } else if textField == repeatPasswordTextField {
+            repeatPasswordTextField.resignFirstResponder()
         }
         
         return true
@@ -58,14 +55,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(logo)
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
-        view.addSubview(loginButton)
+        view.addSubview(repeatPasswordTextField)
         view.addSubview(registerButton)
-        
+        view.addSubview(loginButton)
+
         setupLogo()
         setupEmailTextField()
         setupPasswordTextField()
-        setupLoginButton()
+        setupRepeatPasswordTextField()
         setupRegisterButton()
+        setupLoginButton()
     }
     
     lazy var logo: UIImageView = {
@@ -117,10 +116,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
-    lazy var loginButton: UIButton = {
+    lazy var repeatPasswordTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
+        textField.placeholder = "Repeat password"
+        textField.textAlignment = .center
+        textField.backgroundColor = UIColor.white
+        return textField
+    }()
+    
+    func setupRepeatPasswordTextField() {
+        repeatPasswordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        repeatPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 12).isActive = true
+        repeatPasswordTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        repeatPasswordTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+    
+    lazy var registerButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Register", for: .normal)
         button.setTitleColor(.darkGray, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         //        button.tintColor =
@@ -128,46 +144,34 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(red: 220, green: 220, blue: 220).cgColor
         
-        button.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    func setupLoginButton() {
-        loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 12).isActive = true
-        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-    }
-    
-    lazy var registerButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Don't have an account? Register.", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        
         button.addTarget(self, action: #selector(handleRegisterButton), for: .touchUpInside)
         
         return button
     }()
     
     func setupRegisterButton() {
-        registerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
+        registerButton.topAnchor.constraint(equalTo: repeatPasswordTextField.bottomAnchor, constant: 12).isActive = true
         registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        registerButton.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        registerButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         registerButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
-}
-
-extension UIColor {
-    convenience init(red: Int = 0, green: Int = 0, blue: Int = 0, opacity: Int = 255) {
-        precondition(0...255 ~= red   &&
-            0...255 ~= green &&
-            0...255 ~= blue  &&
-            0...255 ~= opacity, "input range is out of range 0...255")
-        self.init(red: CGFloat(red)/255, green: CGFloat(green)/255, blue: CGFloat(blue)/255, alpha: CGFloat(opacity)/255)
+    lazy var loginButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Already have an account? Login.", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        
+        button.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    func setupLoginButton() {
+        loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
+        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginButton.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
+    
 }
-
-
