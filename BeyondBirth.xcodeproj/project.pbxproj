@@ -12,9 +12,14 @@
 		800C4E1F217139090006A54B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 800C4E1E217139090006A54B /* Assets.xcassets */; };
 		800C4E22217139090006A54B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 800C4E20217139090006A54B /* LaunchScreen.storyboard */; };
 		800C4E2A217158550006A54B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C4E29217158550006A54B /* RegisterViewController.swift */; };
+		80C087CD2183591E006C621B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80C087CC2183591E006C621B /* GoogleService-Info.plist */; };
+		80C087CF21836B9D006C621B /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C087CE21836B9D006C621B /* LoggedInUser.swift */; };
+		80F963B421834BCD001047D4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F963B321834BCD001047D4 /* HomeViewController.swift */; };
+		A91CCB980A5D0CDEB11272C0 /* Pods_BeyondBirth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA43D5DF6166998B62747883 /* Pods_BeyondBirth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D1C9797CE74498414804BD3 /* Pods-BeyondBirth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeyondBirth.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeyondBirth/Pods-BeyondBirth.debug.xcconfig"; sourceTree = "<group>"; };
 		800C4E14217139040006A54B /* BeyondBirth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeyondBirth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		800C4E17217139040006A54B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		800C4E19217139040006A54B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,11 @@
 		800C4E21217139090006A54B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		800C4E23217139090006A54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		800C4E29217158550006A54B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		80C087CC2183591E006C621B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		80C087CE21836B9D006C621B /* LoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUser.swift; sourceTree = "<group>"; };
+		80F963B321834BCD001047D4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A7016FBAF14B6CBC92D4E922 /* Pods-BeyondBirth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeyondBirth.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeyondBirth/Pods-BeyondBirth.release.xcconfig"; sourceTree = "<group>"; };
+		DA43D5DF6166998B62747883 /* Pods_BeyondBirth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeyondBirth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A91CCB980A5D0CDEB11272C0 /* Pods_BeyondBirth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FBCA993581DE43E2D250046 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA43D5DF6166998B62747883 /* Pods_BeyondBirth.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61B456386AC8AE560D3806A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3D1C9797CE74498414804BD3 /* Pods-BeyondBirth.debug.xcconfig */,
+				A7016FBAF14B6CBC92D4E922 /* Pods-BeyondBirth.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		800C4E0B217139040006A54B = {
 			isa = PBXGroup;
 			children = (
 				800C4E16217139040006A54B /* BeyondBirth */,
 				800C4E15217139040006A54B /* Products */,
+				61B456386AC8AE560D3806A8 /* Pods */,
+				3FBCA993581DE43E2D250046 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +85,32 @@
 			isa = PBXGroup;
 			children = (
 				800C4E17217139040006A54B /* AppDelegate.swift */,
-				800C4E19217139040006A54B /* LoginViewController.swift */,
-				800C4E29217158550006A54B /* RegisterViewController.swift */,
+				80F963B321834BCD001047D4 /* HomeViewController.swift */,
+				80C087D021837063006C621B /* Login and Registration */,
+				80C087D12183708E006C621B /* Models */,
 				800C4E1E217139090006A54B /* Assets.xcassets */,
 				800C4E20217139090006A54B /* LaunchScreen.storyboard */,
 				800C4E23217139090006A54B /* Info.plist */,
+				80C087CC2183591E006C621B /* GoogleService-Info.plist */,
 			);
 			path = BeyondBirth;
+			sourceTree = "<group>";
+		};
+		80C087D021837063006C621B /* Login and Registration */ = {
+			isa = PBXGroup;
+			children = (
+				800C4E19217139040006A54B /* LoginViewController.swift */,
+				800C4E29217158550006A54B /* RegisterViewController.swift */,
+			);
+			path = "Login and Registration";
+			sourceTree = "<group>";
+		};
+		80C087D12183708E006C621B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				80C087CE21836B9D006C621B /* LoggedInUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +120,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 800C4E26217139090006A54B /* Build configuration list for PBXNativeTarget "BeyondBirth" */;
 			buildPhases = (
+				754C4469D9B1A63DCEC57CE3 /* [CP] Check Pods Manifest.lock */,
 				800C4E10217139040006A54B /* Sources */,
 				800C4E11217139040006A54B /* Frameworks */,
 				800C4E12217139040006A54B /* Resources */,
+				30FBF7A3B58D9161AC1F927F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,11 +174,65 @@
 			buildActionMask = 2147483647;
 			files = (
 				800C4E22217139090006A54B /* LaunchScreen.storyboard in Resources */,
+				80C087CD2183591E006C621B /* GoogleService-Info.plist in Resources */,
 				800C4E1F217139090006A54B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		30FBF7A3B58D9161AC1F927F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BeyondBirth/Pods-BeyondBirth-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeyondBirth/Pods-BeyondBirth-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		754C4469D9B1A63DCEC57CE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BeyondBirth-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		800C4E10217139040006A54B /* Sources */ = {
@@ -137,6 +242,8 @@
 				800C4E2A217158550006A54B /* RegisterViewController.swift in Sources */,
 				800C4E1A217139040006A54B /* LoginViewController.swift in Sources */,
 				800C4E18217139040006A54B /* AppDelegate.swift in Sources */,
+				80F963B421834BCD001047D4 /* HomeViewController.swift in Sources */,
+				80C087CF21836B9D006C621B /* LoggedInUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +379,7 @@
 		};
 		800C4E27217139090006A54B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D1C9797CE74498414804BD3 /* Pods-BeyondBirth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -290,6 +398,7 @@
 		};
 		800C4E28217139090006A54B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7016FBAF14B6CBC92D4E922 /* Pods-BeyondBirth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
