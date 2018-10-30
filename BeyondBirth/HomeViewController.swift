@@ -16,8 +16,10 @@ class HomeViewController: UIViewController {
         checkIfUserIsLoggedIn()
         
         view.backgroundColor = UIColor.white
-        view.addSubview(logoutbutton)
-        setuplogoutbutton()
+        view.addSubview(logoutButton)
+        view.addSubview(calendarButton)
+        setupLogoutButton()
+        setupCalendarButton()
     }
     
     func checkIfUserIsLoggedIn() {
@@ -44,30 +46,50 @@ class HomeViewController: UIViewController {
         present(LoginViewController(), animated: true, completion: nil)
     }
     
+    @objc func openCalendar() {
+        present(CalendarViewController(), animated: true, completion: nil)
+    }
     
     // MARK: - views
     
-    lazy var logoutbutton: UIButton = {
+    lazy var logoutButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("logout", for: .normal)
         button.setTitleColor(.darkGray, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        //        button.tintColor =
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(red: 220, green: 220, blue: 220).cgColor
-        
         button.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
-        
         return button
     }()
     
-    func setuplogoutbutton() {
-        logoutbutton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        logoutbutton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoutbutton.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        logoutbutton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    func setupLogoutButton() {
+        logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoutButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        logoutButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+    
+    lazy var calendarButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("calendar", for: .normal)
+        button.setTitleColor(.darkGray, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.layer.cornerRadius = 15
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor(red: 220, green: 220, blue: 220).cgColor
+        button.addTarget(self, action: #selector(openCalendar), for: .touchUpInside)
+        return button
+    }()
+    
+    func setupCalendarButton() {
+        calendarButton.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 12).isActive = true
+        calendarButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        calendarButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        calendarButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
 }
