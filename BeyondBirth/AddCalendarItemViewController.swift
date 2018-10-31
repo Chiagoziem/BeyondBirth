@@ -1,5 +1,5 @@
 //
-//  AddCalendarItem.swift
+//  AddCalendarItemViewController.swift
 //  BeyondBirth
 //
 //  Created by Jordan George on 10/26/18.
@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddCalendarItemViewController: UIViewController {
     
@@ -48,6 +49,12 @@ class AddCalendarItemViewController: UIViewController {
         textField.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 5
+        
+        // left padding
+        let leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 10.0, height: 0))
+        textField.leftView = leftView
+        textField.leftViewMode = .always
+        
         return textField
     }()
     
@@ -100,6 +107,7 @@ class AddCalendarItemViewController: UIViewController {
         textView.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1.0).cgColor
         textView.layer.borderWidth = 1
         textView.layer.cornerRadius = 5
+        textView.font = .systemFont(ofSize: 16)
         return textView
     }()
 
@@ -127,7 +135,20 @@ class AddCalendarItemViewController: UIViewController {
     }
     
     @objc func handleSubmitButton() {
-        print("123")
+        let ref: DatabaseReference = Database.database().reference()
+        
+        let values = [
+            "name": nameTextField.text,
+            "notes": notesTextView.text
+        ]
+        
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let key = ref.childByAutoId().key
+        
+        ref.child("appts").child(key!).setValue(values)
+
+        dismiss(animated: true, completion: nil)
     }
     
 }

@@ -25,9 +25,10 @@ class HomeViewController: UIViewController {
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLogin), with: nil, afterDelay: 0)
-        } else {
-            print("user logged in")
         }
+//        else {
+//            print("user logged in")
+//        }
     }
     
     // MARK: - button actions
@@ -47,7 +48,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func openCalendar() {
-        present(CalendarViewController(), animated: true, completion: nil)
+        self.navigationController?.pushViewController(CalendarViewController(), animated: true)
     }
     
     // MARK: - views

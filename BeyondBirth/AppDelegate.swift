@@ -21,8 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
-//        window?.rootViewController = UINavigationController(rootViewController: AddCalendarItemViewController())
+        let nav = UINavigationController(rootViewController: HomeViewController())
+//        nav.navigationBar.backgroundColor = UIColor(red: 0.00, green: 0.51, blue: 0.78, alpha: 1.0)
+        window?.rootViewController = nav
         
         FirebaseApp.configure()
         

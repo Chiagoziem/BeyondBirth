@@ -77,6 +77,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             let uid = user.uid
             let values = ["email": email]
             self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+            
             self.present(HomeViewController(), animated: true, completion: nil)
         }
     }
