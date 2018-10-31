@@ -12,6 +12,7 @@
 		800C4E1F217139090006A54B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 800C4E1E217139090006A54B /* Assets.xcassets */; };
 		800C4E22217139090006A54B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 800C4E20217139090006A54B /* LaunchScreen.storyboard */; };
 		800C4E2A217158550006A54B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C4E29217158550006A54B /* RegisterViewController.swift */; };
+		803A682E2189500800A8B9F9 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803A682D2189500800A8B9F9 /* Appointment.swift */; };
 		80C087CD2183591E006C621B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80C087CC2183591E006C621B /* GoogleService-Info.plist */; };
 		80C087CF21836B9D006C621B /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C087CE21836B9D006C621B /* LoggedInUser.swift */; };
 		80C087D3218377BB006C621B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C087D2218377BB006C621B /* CalendarViewController.swift */; };
@@ -29,6 +30,7 @@
 		800C4E21217139090006A54B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		800C4E23217139090006A54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		800C4E29217158550006A54B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		803A682D2189500800A8B9F9 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		80C087CC2183591E006C621B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		80C087CE21836B9D006C621B /* LoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUser.swift; sourceTree = "<group>"; };
 		80C087D2218377BB006C621B /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				80C087CE21836B9D006C621B /* LoggedInUser.swift */,
+				803A682D2189500800A8B9F9 /* Appointment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				80C087D3218377BB006C621B /* CalendarViewController.swift in Sources */,
 				800C4E2A217158550006A54B /* RegisterViewController.swift in Sources */,
 				800C4E1A217139040006A54B /* LoginViewController.swift in Sources */,
+				803A682E2189500800A8B9F9 /* Appointment.swift in Sources */,
 				800C4E18217139040006A54B /* AppDelegate.swift in Sources */,
 				80C087D521837A19006C621B /* AddCalendarItemViewController.swift in Sources */,
 				80F963B421834BCD001047D4 /* HomeViewController.swift in Sources */,

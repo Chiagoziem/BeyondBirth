@@ -139,6 +139,7 @@ class AddCalendarItemViewController: UIViewController {
         
         let values = [
             "name": nameTextField.text,
+            "date": datePickerTextField.text,
             "notes": notesTextView.text
         ]
         
@@ -146,7 +147,7 @@ class AddCalendarItemViewController: UIViewController {
         
         let key = ref.childByAutoId().key
         
-        ref.child("appts").child(key!).setValue(values)
+        ref.child("appointments").child(key!).setValue(values)
 
         dismiss(animated: true, completion: nil)
     }

@@ -11,9 +11,10 @@ import Firebase
 
 class CalendarViewController: UIViewController, UITableViewDataSource {
     
-    let myArray: NSArray = ["First","Second","Third"]
     let reuseID = "cell"
-
+    var appointments = [Appointment]()
+    let DatabaseRef = Database.database().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,11 +23,44 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
 //        tableView.register(CustomTableCell.self, forCellReuseIdentifier: reuseID)
         
         setupViews()
+        loadImages()
     }
     
     @objc func addcalendaritem(){
         present(AddCalendarItemViewController(), animated: true, completion: nil)
     }
+    
+    func loadImages() {
+        appointments.removeAll()
+        tableView.reloadData()
+        observeAllAppointments()
+    }
+    
+    func observeAllAppointments() {
+        let ref = DatabaseRef.child("appointments")
+        
+        ref.queryOrdered(byChild: "date").observe(.childAdded, with: { (snapshot) in
+            
+            if let apptsnapshots = snapshot.value as? [String:AnyObject]{
+                let appt = Appointment()
+                
+                appt.date = apptsnapshots["date"] as? String
+                appt.notes = apptsnapshots["notes"] as? String
+                appt.name = apptsnapshots["name"] as? String
+                
+                self.appointments.append(appt)
+//                self.appointments = self.appointments.reversed()
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        }, withCancel: nil)
+        
+        DatabaseRef.removeAllObservers()
+    }
+    
     
     func setupViews() {
         view.backgroundColor = .white
@@ -52,12 +86,15 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
 
 extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myArray.count
+        return appointments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath)
-        cell.textLabel!.text = "\(myArray[indexPath.row])"
+        
+        let name = (appointments[indexPath.row].name)!
+        cell.textLabel!.text = "\(name)"
+        
         return cell
     }
 }
