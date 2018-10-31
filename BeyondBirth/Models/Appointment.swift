@@ -8,8 +8,10 @@
 
 import Foundation
 
+// model for appointments
 class Appointment: NSObject {
     var name: String?
+    var dateString: String?
     var date: String?
     var notes: String?
 }

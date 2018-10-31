@@ -11,16 +11,44 @@ import Firebase
 
 class AddCalendarItemViewController: UIViewController {
     
-    let borderColor = UIColor()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        // designs and positions the views
         setupViews()
     }
     
+    @objc func handleSubmitButton() {
+        let ref: DatabaseReference = Database.database().reference()
+        
+        
+        
+        //        let date = datePicker.date
+        let date = datePicker.date as NSDate
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd, H:mm:ss"
+        let defaultTimeZoneStr = formatter.string(from: date as Date)
+        
+        
+        
+        
+        let values: [String: Any] = [
+            "name": nameTextField.text!,
+            "dateString": datePickerTextField.text!,
+            "date": defaultTimeZoneStr,
+            "notes": notesTextView.text
+        ]
+        
+        let key = ref.childByAutoId().key
+        
+        ref.child("appointments").child(key!).setValue(values)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
     func setupViews() {
+        view.backgroundColor = .white
+        
         view.addSubview(nameTextField)
         view.addSubview(datePickerTextField)
         view.addSubview(notesTextView)
@@ -30,18 +58,31 @@ class AddCalendarItemViewController: UIViewController {
         setupDatePickerTextField()
         setupNotesTextView()
         setupSubmitButton()
-
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEEEEEE LLL dd hh:mm aaa"
+        datePickerTextField.text = dateFormatter.string(from: Date())
+        
         datePickerTextField.inputView = datePicker
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddCalendarItemViewController.tapToLeave(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
     }
     
-    // MARK: - keyboard functions
+    // allows the user to tap outside of the datepicker to close it
+    @objc func tapToLeave(gestureRecognizer: UITapGestureRecognizer){
+        view.endEditing(true)
+    }
     
-    
+    // formats the date selected and places it into the UI Text Field
+    @objc func dateSelected(datePicker: UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEEEEEE LLL dd hh:mm aaa"
+        datePickerTextField.text = dateFormatter.string(from: datePicker.date)
+    }
     
     // MARK: - views
     
+    // creates text field for appointment name
     var nameTextField: UITextField = {
         let textField =  UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -58,13 +99,15 @@ class AddCalendarItemViewController: UIViewController {
         return textField
     }()
     
+    // positions the appointment name text field
     func setupNameTextField() {
         nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         nameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         nameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 9/10).isActive = true
         nameTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
-
+    
+    // creates text field for the date picker
     var datePickerTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -76,6 +119,7 @@ class AddCalendarItemViewController: UIViewController {
         return textField
     }()
     
+    // positions the date picker text field
     func setupDatePickerTextField() {
         datePickerTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         datePickerTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 12).isActive = true
@@ -83,24 +127,15 @@ class AddCalendarItemViewController: UIViewController {
         datePickerTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 
+    // creates the date picker
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .dateAndTime
         datePicker.addTarget(self, action: #selector(AddCalendarItemViewController.dateSelected(datePicker:)), for: .valueChanged)
         return datePicker
     }()
-
-    @objc func tapToLeave(gestureRecognizer: UITapGestureRecognizer){
-        view.endEditing(true)
-    }
-
-    // formats the date selected and places it into the UI Text Field
-    @objc func dateSelected(datePicker: UIDatePicker){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEEEEEE LLL dd hh:mm aaa"
-        datePickerTextField.text = dateFormatter.string(from: datePicker.date)
-    }
     
+    // creates text view for notes
     var notesTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -111,13 +146,15 @@ class AddCalendarItemViewController: UIViewController {
         return textView
     }()
 
+    // positions the notes text view
     func setupNotesTextView() {
         notesTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         notesTextView.topAnchor.constraint(equalTo: datePickerTextField.bottomAnchor, constant: 12).isActive = true
         notesTextView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 9/10).isActive = true
         notesTextView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
-
+    
+    // creates submit button
     lazy var submitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -126,30 +163,13 @@ class AddCalendarItemViewController: UIViewController {
         button.addTarget(self, action: #selector(handleSubmitButton), for: .touchUpInside)
         return button
     }()
-
+    
+    // positions submit button
     func setupSubmitButton() {
         submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         submitButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
         submitButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 9/10).isActive = true
         submitButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-    }
-    
-    @objc func handleSubmitButton() {
-        let ref: DatabaseReference = Database.database().reference()
-        
-        let values = [
-            "name": nameTextField.text,
-            "date": datePickerTextField.text,
-            "notes": notesTextView.text
-        ]
-        
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        let key = ref.childByAutoId().key
-        
-        ref.child("appointments").child(key!).setValue(values)
-
-        dismiss(animated: true, completion: nil)
     }
     
 }

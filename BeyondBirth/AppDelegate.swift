@@ -18,13 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // allows for programmatically creating views
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
+        // creates navigation controller
         let nav = UINavigationController(rootViewController: HomeViewController())
 //        nav.navigationBar.backgroundColor = UIColor(red: 0.00, green: 0.51, blue: 0.78, alpha: 1.0)
         window?.rootViewController = nav
         
+        // configure firebase
         FirebaseApp.configure()
         
         return true

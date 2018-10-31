@@ -11,42 +11,45 @@ import Firebase
 
 class CalendarViewController: UIViewController, UITableViewDataSource {
     
-    let reuseID = "cell"
-    var appointments = [Appointment]()
+    let reuseIdentifier = "cell"
     let DatabaseRef = Database.database().reference()
+    var appointments = [Appointment]() // stores appointments from database
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addcalendaritem))
-        
-//        tableView.register(CustomTableCell.self, forCellReuseIdentifier: reuseID)
-        
+        // design and position views
         setupViews()
-        loadImages()
+        
+        loadAppointments()
+        print(appointments)
     }
     
-    @objc func addcalendaritem(){
-        present(AddCalendarItemViewController(), animated: true, completion: nil)
+    @objc func goToAddCalendarItemViewController(){
+        self.navigationController?.pushViewController(AddCalendarItemViewController(), animated: true)
     }
     
-    func loadImages() {
+    func loadAppointments() {
         appointments.removeAll()
         tableView.reloadData()
         observeAllAppointments()
     }
     
+    // retrieve all appointments for user from firebase
     func observeAllAppointments() {
         let ref = DatabaseRef.child("appointments")
         
+        // FIXME: is this displaying in right order?
+        // FIXME: display specifically for logged in user only; currently displaying for every user
         ref.queryOrdered(byChild: "date").observe(.childAdded, with: { (snapshot) in
-            
-            if let apptsnapshots = snapshot.value as? [String:AnyObject]{
+//            print(snapshot)
+            if let apptSnapshots = snapshot.value as? [String: AnyObject]{
                 let appt = Appointment()
                 
-                appt.date = apptsnapshots["date"] as? String
-                appt.notes = apptsnapshots["notes"] as? String
-                appt.name = apptsnapshots["name"] as? String
+                appt.name = apptSnapshots["name"] as? String
+                appt.dateString = apptSnapshots["dateString"] as? String
+                appt.date = apptSnapshots["date"] as? String
+                appt.notes = apptSnapshots["notes"] as? String
                 
                 self.appointments.append(appt)
 //                self.appointments = self.appointments.reversed()
@@ -55,14 +58,15 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         }, withCancel: nil)
         
         DatabaseRef.removeAllObservers()
     }
     
+    // MARK: - view setup
     
     func setupViews() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToAddCalendarItemViewController))
         view.backgroundColor = .white
         view.addSubview(tableView)
         setupTableView()
@@ -73,7 +77,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(CustomTableCell.self, forCellReuseIdentifier: reuseID)
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         return tableView
     }()
     
@@ -84,29 +88,66 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
     
 }
 
+// overrides table view functions needed for table view to work
 extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appointments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! CustomTableViewCell
         
         let name = (appointments[indexPath.row].name)!
-        cell.textLabel!.text = "\(name)"
+        let date = (appointments[indexPath.row].dateString)!
+
+        cell.nameLabel.text = name
+        cell.dateLabel.text = date
         
         return cell
     }
 }
 
-class CustomTableCell: UITableViewCell {
+// formats the custom table view cell
+class CustomTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        contentView.backgroundColor = .white
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
+        addSubview(nameLabel)
+        addSubview(dateLabel)
+        setupNameLabel()
+        setupDateLabel()
+    }
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "text"
+        return label
+    }()
+    
+    func setupNameLabel() {
+        nameLabel.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+    }
+    
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "text"
+        return label
+    }()
+    
+    func setupDateLabel() {
+        dateLabel.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        dateLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        dateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
     }
 }

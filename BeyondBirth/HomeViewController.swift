@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
         
         checkIfUserIsLoggedIn()
         
+        // design views
         view.backgroundColor = UIColor.white
         view.addSubview(logoutButton)
         view.addSubview(calendarButton)
@@ -22,31 +23,38 @@ class HomeViewController: UIViewController {
         setupCalendarButton()
     }
     
+    // checks if the current user is logged in
     func checkIfUserIsLoggedIn() {
+        // if uid is nil, the user is not logged in
         if Auth.auth().currentUser?.uid == nil {
+            // show login view
             perform(#selector(handleLogin), with: nil, afterDelay: 0)
+        } else {
+            // user is logged in
+            print("user logged in")
         }
-//        else {
-//            print("user logged in")
-//        }
     }
     
     // MARK: - button actions
     
+    // log out the current user
     @objc func handleLogout() {
         do {
             try Auth.auth().signOut()
         } catch let logoutError {
             print(logoutError)
         }
-
+        
+        // present login view
         present(LoginViewController(), animated: true, completion: nil)
     }
     
+    // presents login view
     @objc func handleLogin() {
         present(LoginViewController(), animated: true, completion: nil)
     }
     
+    // presents calendar view
     @objc func openCalendar() {
         self.navigationController?.pushViewController(CalendarViewController(), animated: true)
     }
