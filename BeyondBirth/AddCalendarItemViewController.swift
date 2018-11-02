@@ -30,16 +30,17 @@ class AddCalendarItemViewController: UIViewController {
         let defaultTimeZoneStr = formatter.string(from: date as Date)
         
         
-        
+        let key = ref.childByAutoId().key
         
         let values: [String: Any] = [
+            "key": key,
             "name": nameTextField.text!,
             "dateString": datePickerTextField.text!,
             "date": defaultTimeZoneStr,
             "notes": notesTextView.text
         ]
         
-        let key = ref.childByAutoId().key
+        
         
         ref.child("appointments").child(key!).setValue(values)
         

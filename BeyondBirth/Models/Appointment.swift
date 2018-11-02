@@ -10,6 +10,7 @@ import Foundation
 
 // model for appointments
 class Appointment: NSObject {
+    var key: String?
     var name: String?
     var dateString: String?
     var date: String?

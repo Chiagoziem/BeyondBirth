@@ -46,6 +46,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
             if let apptSnapshots = snapshot.value as? [String: AnyObject]{
                 let appt = Appointment()
                 
+                appt.key = apptSnapshots["key"] as? String
                 appt.name = apptSnapshots["name"] as? String
                 appt.dateString = apptSnapshots["dateString"] as? String
                 appt.date = apptSnapshots["date"] as? String
@@ -104,6 +105,28 @@ extension CalendarViewController: UITableViewDelegate {
         cell.dateLabel.text = date
         
         return cell
+    }
+    
+    // for deletion
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // for deletion
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let appt = appointments[indexPath.row]
+            
+            let ref = DatabaseRef.child("appointments").child(appt.key!)
+            
+            ref.removeValue { (error, ref) in
+                if error != nil {
+                    print(error!)
+                }
+                self.appointments.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }
     }
 }
 
