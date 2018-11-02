@@ -155,9 +155,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(red: 220, green: 220, blue: 220).cgColor
-        
         button.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
-        
         return button
     }()
     
@@ -173,9 +171,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Don't have an account? Register.", for: .normal)
         button.setTitleColor(.blue, for: .normal)
-        
         button.addTarget(self, action: #selector(handleRegisterButton), for: .touchUpInside)
-        
         return button
     }()
     
@@ -197,5 +193,3 @@ extension UIColor {
         self.init(red: CGFloat(red)/255, green: CGFloat(green)/255, blue: CGFloat(blue)/255, alpha: CGFloat(opacity)/255)
     }
 }
-
-

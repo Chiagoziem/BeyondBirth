@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TimeViewController: UIViewController {
     // play button
     var playButton: UIButton!
 
@@ -70,13 +70,13 @@ class ViewController: UIViewController {
     var timer = Timer()
     
     func timerLB(){
-        
         view.addSubview(TimerLable)
         action()
     }
     
     // calls all views
     func setUpViews(){
+        view.backgroundColor = .white
         startButton()
         stopButton()
         restartButton()
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
     // action functions
     // start
     @IBAction func start(_ sender: UIButton){
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.action), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TimeViewController.action), userInfo: nil, repeats: true)
     }
     // stop
     @IBAction func stop(_ sender: AnyObject){

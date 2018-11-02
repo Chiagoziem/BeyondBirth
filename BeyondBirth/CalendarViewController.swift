@@ -123,6 +123,7 @@ extension CalendarViewController: UITableViewDelegate {
                 if error != nil {
                     print(error!)
                 }
+                
                 self.appointments.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }

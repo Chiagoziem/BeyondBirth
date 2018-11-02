@@ -23,8 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         // creates navigation controller
-        let nav = UINavigationController(rootViewController: HomeViewController())
-//        nav.navigationBar.backgroundColor = UIColor(red: 0.00, green: 0.51, blue: 0.78, alpha: 1.0)
+        let nav = UINavigationController(rootViewController: TimeViewController())
         window?.rootViewController = nav
         
         // configure firebase
