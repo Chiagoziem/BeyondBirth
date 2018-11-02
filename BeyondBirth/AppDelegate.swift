@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         // creates navigation controller
-        let nav = UINavigationController(rootViewController: TimeViewController())
+        let nav = UINavigationController(rootViewController: HomeViewController())
         window?.rootViewController = nav
         
         // configure firebase
@@ -54,6 +54,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
-

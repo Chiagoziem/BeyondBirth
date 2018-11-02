@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimeViewController: UIViewController {
+class TimerViewController: UIViewController {
     // play button
     var playButton: UIButton!
 
