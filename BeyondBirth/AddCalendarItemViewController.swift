@@ -33,9 +33,11 @@ class AddCalendarItemViewController: UIViewController {
         // check values before submitting
         if name.count == 0 || dateString.count == 0 {
             alert(title: "Submission Error", message: "Need appointment name.")
+            return
         }
         if dateString.count != 19 {
             alert(title: "Date Error", message: "Need date.")
+            return
         }
         
         // format date for sorting
