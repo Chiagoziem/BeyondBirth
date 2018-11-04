@@ -18,26 +18,47 @@ class AddCalendarItemViewController: UIViewController {
         setupViews()
     }
     
+    func alert(title: String = "", message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(OKAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     @objc func handleSubmitButton() {
-        let ref: DatabaseReference = Database.database().reference()
+        guard let name = nameTextField.text,
+            let dateString = datePickerTextField.text,
+            let notes = notesTextView.text else { return }
         
+        // check values before submitting
+        if name.count == 0 || dateString.count == 0 {
+            alert(title: "Submission Error", message: "Need appointment name.")
+        }
+        if dateString.count != 19 {
+            alert(title: "Date Error", message: "Need date.")
+        }
+        
+        // format date for sorting
         let date = datePicker.date as NSDate
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd, H:mm:ss"
         let defaultTimeZoneStr = formatter.string(from: date as Date)
 
+        let ref: DatabaseReference = Database.database().reference()
+        
         let key = ref.childByAutoId().key
         
         let values: [String: Any] = [
             "key": key!,
-            "name": nameTextField.text!,
-            "dateString": datePickerTextField.text!,
+            "name": name,
+            "dateString": dateString,
             "date": defaultTimeZoneStr,
-            "notes": notesTextView.text
+            "notes": notes
         ]
         
         let uid = Auth.auth().currentUser?.uid
         
+        // add appointment under current user's appointments
         ref.child("appointments").child(uid!).child(key!).setValue(values)
         
         navigationController?.popViewController(animated: true)

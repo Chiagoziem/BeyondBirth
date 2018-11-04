@@ -30,7 +30,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            self.loggedInUser.email = values["email"] as! String
+            self.loggedInUser.email = (values["email"] as! String)
         })
     }
     
@@ -40,8 +40,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    // MARK: - button actions
     
     @objc func handleRegisterButton() {
         guard let email = emailTextField.text,

@@ -25,8 +25,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    // MARK: - button actions
-    
     @objc func handleLoginButton() {
         guard let email = emailTextField.text,
             let password = passwordTextField.text else {

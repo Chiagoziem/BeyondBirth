@@ -20,12 +20,10 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
 
         // design and position views
         setupViews()
-        
-//        loadAppointments()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         loadAppointments()
     }
     
@@ -35,7 +33,6 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
     
     func loadAppointments() {
         appointments.removeAll()
-//        tableView.reloadData()
         observeAllAppointments()
     }
     
@@ -45,7 +42,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
         let ref = DatabaseRef.child("appointments").child(uid!)
         
         ref.queryOrdered(byChild: "date").observe(.childAdded, with: { (snapshot) in
-            if let apptSnapshots = snapshot.value as? [String: AnyObject]{
+            if let apptSnapshots = snapshot.value as? [String: AnyObject] {
                 let appt = Appointment()
                 
                 appt.key = apptSnapshots["key"] as? String
