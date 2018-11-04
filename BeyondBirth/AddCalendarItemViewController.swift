@@ -21,28 +21,24 @@ class AddCalendarItemViewController: UIViewController {
     @objc func handleSubmitButton() {
         let ref: DatabaseReference = Database.database().reference()
         
-        
-        
-        //        let date = datePicker.date
         let date = datePicker.date as NSDate
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd, H:mm:ss"
         let defaultTimeZoneStr = formatter.string(from: date as Date)
-        
-        
+
         let key = ref.childByAutoId().key
         
         let values: [String: Any] = [
-            "key": key,
+            "key": key!,
             "name": nameTextField.text!,
             "dateString": datePickerTextField.text!,
             "date": defaultTimeZoneStr,
             "notes": notesTextView.text
         ]
         
+        let uid = Auth.auth().currentUser?.uid
         
-        
-        ref.child("appointments").child(key!).setValue(values)
+        ref.child("appointments").child(uid!).child(key!).setValue(values)
         
         navigationController?.popViewController(animated: true)
     }

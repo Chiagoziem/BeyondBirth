@@ -50,7 +50,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             print("successfully logged in user")
             
             // dismiss all login and register view controllers
-            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+            self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         })
     }
     
@@ -62,7 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Hide keyboard when user touches outside keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -122,7 +122,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func setupEmailTextField() {
         emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTextField.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 50).isActive = true
-        emailTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/5).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
@@ -141,7 +141,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func setupPasswordTextField() {
         passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 12).isActive = true
-        passwordTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/5).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
@@ -151,7 +151,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.setTitle("Login", for: .normal)
         button.setTitleColor(.darkGray, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        //        button.tintColor =
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(red: 220, green: 220, blue: 220).cgColor
@@ -162,7 +161,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func setupLoginButton() {
         loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 12).isActive = true
         loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        loginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/5).isActive = true
         loginButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     

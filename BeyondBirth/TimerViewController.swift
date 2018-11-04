@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  Time
+//  TimerViewController.swift
+//  BeyondBirth
 //
 //  Created by Rachael Metzger on 11/1/18.
 //  Copyright © 2018 Rachael Metzger. All rights reserved.
@@ -86,7 +86,7 @@ class TimerViewController: UIViewController {
     // action functions
     // start
     @IBAction func start(_ sender: UIButton){
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TimeViewController.action), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TimerViewController.action), userInfo: nil, repeats: true)
     }
     // stop
     @IBAction func stop(_ sender: AnyObject){

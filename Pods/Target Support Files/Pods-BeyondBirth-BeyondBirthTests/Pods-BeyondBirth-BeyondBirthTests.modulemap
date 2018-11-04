@@ -1,0 +1,6 @@
+framework module Pods_BeyondBirth_BeyondBirthTests {
+  umbrella header "Pods-BeyondBirth-BeyondBirthTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

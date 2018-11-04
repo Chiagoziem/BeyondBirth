@@ -21,8 +21,12 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
         // design and position views
         setupViews()
         
+//        loadAppointments()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
         loadAppointments()
-        print(appointments)
     }
     
     @objc func goToAddCalendarItemViewController(){
@@ -31,18 +35,16 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
     
     func loadAppointments() {
         appointments.removeAll()
-        tableView.reloadData()
+//        tableView.reloadData()
         observeAllAppointments()
     }
     
     // retrieve all appointments for user from firebase
     func observeAllAppointments() {
-        let ref = DatabaseRef.child("appointments")
+        let uid = Auth.auth().currentUser?.uid
+        let ref = DatabaseRef.child("appointments").child(uid!)
         
-        // FIXME: is this displaying in right order?
-        // FIXME: display specifically for logged in user only; currently displaying for every user
         ref.queryOrdered(byChild: "date").observe(.childAdded, with: { (snapshot) in
-//            print(snapshot)
             if let apptSnapshots = snapshot.value as? [String: AnyObject]{
                 let appt = Appointment()
                 
@@ -53,7 +55,6 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
                 appt.notes = apptSnapshots["notes"] as? String
                 
                 self.appointments.append(appt)
-//                self.appointments = self.appointments.reversed()
             }
             
             DispatchQueue.main.async {

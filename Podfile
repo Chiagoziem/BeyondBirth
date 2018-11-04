@@ -9,5 +9,9 @@ target 'BeyondBirth' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-
+  
+  target 'BeyondBirthTests' do
+      pod 'Firebase'
+  end
+  
 end

@@ -20,7 +20,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         setupViews()
     }
     
-    func registerUserIntoDatabaseWithUID(_ uid: String, values: [String: AnyObject]) {
+    func registerUserIntoDatabaseWithUID(_ uid: String, values: [String: Any]) {
         let ref = Database.database().reference()
         let usersReference = ref.child("users").child(uid)
         
@@ -30,10 +30,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            // this setter potentially crashes if keys don't match
-            self.loggedInUser.setValuesForKeys(values)
-            
-            print("in register.swift: ", self.loggedInUser.email!)
+            self.loggedInUser.email = values["email"] as! String
         })
     }
     
@@ -54,7 +51,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 return
         }
         
-        // alerts
+        // alerts for invalid registration info
+        if email.contains("@") == false {
+            alert(title: "Email Error", message: "Not a valid email.")
+            return
+        }
         if password.count < 6 || repeatedPassword.count < 6 {
             alert(title: "Password Error", message: "Need at least 6 charactors for passwords")
             return
@@ -63,8 +64,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             alert(title: "Password Error", message: "Make sure your passwords match.")
             return
         }
-        //if email.characters.count <
-        //if email is taken
         
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             guard let user = authResult?.user else { return }
@@ -76,9 +75,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             
             let uid = user.uid
             let values = ["email": email]
-            self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+            self.registerUserIntoDatabaseWithUID(uid, values: values as [String : Any])
             
-            self.present(HomeViewController(), animated: true, completion: nil)
+            self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -90,13 +89,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     // Hide keyboard when user touches outside keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
     
+    // Switches focus to next text field
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTextField.resignFirstResponder()
-        
-        // Switch focus to other text field
+
         if textField == emailTextField {
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
@@ -104,7 +103,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         } else if textField == repeatPasswordTextField {
             repeatPasswordTextField.resignFirstResponder()
         }
-        
+
         return true
     }
     
@@ -154,7 +153,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func setupEmailTextField() {
         emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTextField.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 50).isActive = true
-        emailTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        emailTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/5).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
@@ -173,7 +172,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func setupPasswordTextField() {
         passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 12).isActive = true
-        passwordTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/5).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
@@ -192,7 +191,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func setupRepeatPasswordTextField() {
         repeatPasswordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         repeatPasswordTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 12).isActive = true
-        repeatPasswordTextField.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        repeatPasswordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/5).isActive = true
         repeatPasswordTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
@@ -215,7 +214,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func setupRegisterButton() {
         registerButton.topAnchor.constraint(equalTo: repeatPasswordTextField.bottomAnchor, constant: 12).isActive = true
         registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        registerButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        registerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 3/5).isActive = true
         registerButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
