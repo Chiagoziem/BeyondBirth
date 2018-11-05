@@ -16,11 +16,11 @@ class Appointment: NSObject {
     var date: String?
     var notes: String?
     
-//    init(key: String, name: String, dateString: String, date: String, notes: String) {
-//        self.key = key
-//        self.name = name
-//        self.dateString = dateString
-//        self.date = date
-//        self.notes = notes
-//    }
+    init(key: String, name: String, dateString: String, date: String, notes: String) {
+        self.key = key
+        self.name = name
+        self.dateString = dateString
+        self.date = date
+        self.notes = notes
+    }
 }

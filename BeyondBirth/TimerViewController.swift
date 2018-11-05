@@ -11,7 +11,7 @@ import UIKit
 class TimerViewController: UIViewController {
     // play button
     var playButton: UIButton!
-
+    
     func startButton() {
         playButton = UIButton(type: .system)
         playButton.backgroundColor = UIColor.blue
@@ -22,7 +22,7 @@ class TimerViewController: UIViewController {
         playButton.center = CGPoint(x: 200, y: 400)
         playButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         view.addSubview(playButton)
-
+        
     }
     
     // pause button

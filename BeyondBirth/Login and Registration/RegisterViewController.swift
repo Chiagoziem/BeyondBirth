@@ -93,7 +93,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     // Switches focus to next text field
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTextField.resignFirstResponder()
-
+        
         if textField == emailTextField {
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
@@ -101,7 +101,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         } else if textField == repeatPasswordTextField {
             repeatPasswordTextField.resignFirstResponder()
         }
-
+        
         return true
     }
     
@@ -114,7 +114,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(repeatPasswordTextField)
         view.addSubview(registerButton)
         view.addSubview(loginButton)
-
+        
         setupLogo()
         setupEmailTextField()
         setupPasswordTextField()

@@ -29,10 +29,8 @@ class HomeViewController: UIViewController {
         if Auth.auth().currentUser?.uid == nil {
             // show login view
             perform(#selector(handleLogin), with: nil, afterDelay: 0)
-        } else {
-            // user is logged in
-            print("user logged in")
         }
+        // else, the user is logged in
     }
     
     // MARK: - button actions

@@ -45,7 +45,7 @@ class AddCalendarItemViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd, H:mm:ss"
         let defaultTimeZoneStr = formatter.string(from: date as Date)
-
+        
         let ref: DatabaseReference = Database.database().reference()
         
         let key = ref.childByAutoId().key
@@ -146,7 +146,7 @@ class AddCalendarItemViewController: UIViewController {
         datePickerTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 9/10).isActive = true
         datePickerTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
-
+    
     // creates the date picker
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
@@ -165,7 +165,7 @@ class AddCalendarItemViewController: UIViewController {
         textView.font = .systemFont(ofSize: 16)
         return textView
     }()
-
+    
     // positions the notes text view
     func setupNotesTextView() {
         notesTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

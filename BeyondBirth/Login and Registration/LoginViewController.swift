@@ -28,24 +28,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc func handleLoginButton() {
         guard let email = emailTextField.text,
             let password = passwordTextField.text else {
-            print("Form is not valid")
-            return
+                print("Form is not valid")
+                return
         }
         
-        // alerts
+        // alerts for checking if inputs are right before logging in the user
         if password.count < 6 {
             alert(title: "Password Error", message: "Need at least 6 charactors for passwords")
             return
         }
         
         Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-            
             if error != nil {
                 print(error!)
                 return
             }
-            
-            print("successfully logged in user")
             
             // dismiss all login and register view controllers
             self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)

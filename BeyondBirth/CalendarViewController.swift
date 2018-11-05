@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // design and position views
         setupViews()
     }
@@ -43,14 +43,11 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
         
         ref.queryOrdered(byChild: "date").observe(.childAdded, with: { (snapshot) in
             if let apptSnapshots = snapshot.value as? [String: AnyObject] {
-                let appt = Appointment()
-                
-                appt.key = apptSnapshots["key"] as? String
-                appt.name = apptSnapshots["name"] as? String
-                appt.dateString = apptSnapshots["dateString"] as? String
-                appt.date = apptSnapshots["date"] as? String
-                appt.notes = apptSnapshots["notes"] as? String
-                
+                let appt = Appointment(key: apptSnapshots["key"] as! String,
+                                       name: apptSnapshots["name"] as! String,
+                                       dateString: apptSnapshots["dateString"] as! String,
+                                       date: apptSnapshots["date"] as! String,
+                                       notes: apptSnapshots["notes"] as! String)
                 self.appointments.append(appt)
             }
             
@@ -98,7 +95,7 @@ extension CalendarViewController: UITableViewDelegate {
         
         let name = (appointments[indexPath.row].name)!
         let date = (appointments[indexPath.row].dateString)!
-
+        
         cell.nameLabel.text = name
         cell.dateLabel.text = date
         
