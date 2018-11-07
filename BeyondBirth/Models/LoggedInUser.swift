@@ -11,4 +11,10 @@ import Foundation
 // model for the logged in user
 class LoggedInUser: NSObject {
     var email: String?
+    var name: String?
+    
+    init(email: String, name: String) {
+        self.email = email
+        self.name = name
+    }
 }

@@ -15,6 +15,7 @@
 		800C4E2A217158550006A54B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C4E29217158550006A54B /* RegisterViewController.swift */; };
 		803A682E2189500800A8B9F9 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803A682D2189500800A8B9F9 /* Appointment.swift */; };
 		804343B2218CCAED0097D8C3 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804343B1218CCAED0097D8C3 /* TimerViewController.swift */; };
+		8079EADB2193A4290021D50F /* BreathingExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8079EADA2193A4290021D50F /* BreathingExercisesViewController.swift */; };
 		80BA7CC6218F967100BF95C2 /* BeyondBirthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BA7CC5218F967100BF95C2 /* BeyondBirthTests.swift */; };
 		80C087CD2183591E006C621B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80C087CC2183591E006C621B /* GoogleService-Info.plist */; };
 		80C087CF21836B9D006C621B /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C087CE21836B9D006C621B /* LoggedInUser.swift */; };
@@ -46,6 +47,7 @@
 		800C4E29217158550006A54B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		803A682D2189500800A8B9F9 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		804343B1218CCAED0097D8C3 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		8079EADA2193A4290021D50F /* BreathingExercisesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreathingExercisesViewController.swift; sourceTree = "<group>"; };
 		80BA7CC3218F967100BF95C2 /* BeyondBirthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeyondBirthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BA7CC5218F967100BF95C2 /* BeyondBirthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeyondBirthTests.swift; sourceTree = "<group>"; };
 		80BA7CC7218F967100BF95C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				80C087D2218377BB006C621B /* CalendarViewController.swift */,
 				80C087D421837A19006C621B /* AddCalendarItemViewController.swift */,
 				804343B1218CCAED0097D8C3 /* TimerViewController.swift */,
+				8079EADA2193A4290021D50F /* BreathingExercisesViewController.swift */,
 				80C087D021837063006C621B /* Login and Registration */,
 				80C087D12183708E006C621B /* Models */,
 				800C4E1E217139090006A54B /* Assets.xcassets */,
@@ -379,6 +382,7 @@
 				803A682E2189500800A8B9F9 /* Appointment.swift in Sources */,
 				800C4E18217139040006A54B /* AppDelegate.swift in Sources */,
 				80C087D521837A19006C621B /* AddCalendarItemViewController.swift in Sources */,
+				8079EADB2193A4290021D50F /* BreathingExercisesViewController.swift in Sources */,
 				80F963B421834BCD001047D4 /* HomeViewController.swift in Sources */,
 				804343B2218CCAED0097D8C3 /* TimerViewController.swift in Sources */,
 				80C087CF21836B9D006C621B /* LoggedInUser.swift in Sources */,
