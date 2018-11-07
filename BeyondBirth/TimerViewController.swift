@@ -19,7 +19,6 @@ class TimerViewController: UIViewController {
     var hours = 0
     var minutes = 0
     var seconds = 0
-    //    var fractions = 0
     var timer = Timer()
     
     // play button
@@ -69,8 +68,6 @@ class TimerViewController: UIViewController {
     }
     
     // Timer lable
-    // evenually, we can add a second label just for fractions and it will run smoother
-    //@IBOutlet weak var TimerLable: UILabel!
     var TimerLable: UILabel = {
         let lb = UILabel()
         lb.frame = CGRect(x: 300, y: 300, width: 350, height: 100)
@@ -101,7 +98,8 @@ class TimerViewController: UIViewController {
     // action functions
     // start
     @objc  func start() {
-        [timer.invalidate()] // this takes care of speeding up clock on multiple clicks on start
+        [timer.invalidate()]
+        // this takes care of speeding up clock on multiple clicks on start
 
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TimerViewController.action), userInfo: nil, repeats: true)
 
@@ -121,13 +119,8 @@ class TimerViewController: UIViewController {
         TimerLable.text = ("0:0:0")
     }
     
-    // runs count so we can track seonds, minutes, and hour
+    // runs count so we can track seonds, minutes, and hours
     @objc func action(){
-        //        fractions += 1
-        //        if fractions > 99 {
-        //            seconds += 1
-        //            fractions = 0
-        //        }
         seconds += 1
         if seconds == 60{
             minutes += 1
