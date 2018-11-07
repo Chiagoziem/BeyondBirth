@@ -27,7 +27,7 @@ class TimerViewController: UIViewController {
     func startButton() {
         playButton = UIButton(type: .system)
         playButton.backgroundColor = UIColor.blue
-        playButton.setTitleColor( .black, for: .normal)
+        playButton.setTitleColor( .white, for: .normal)
         playButton.setTitle("Start", for: .normal)
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.bounds = CGRect(x: 300, y: 300, width: 250, height: 50)
@@ -43,7 +43,7 @@ class TimerViewController: UIViewController {
     func stopButton() {
         pauseButton = UIButton(type: .system)
         pauseButton.backgroundColor = UIColor.blue
-        pauseButton.setTitleColor( .black, for: .normal)
+        pauseButton.setTitleColor( .white, for: .normal)
         pauseButton.setTitle("Pause", for: .normal)
         pauseButton.translatesAutoresizingMaskIntoConstraints = false
         pauseButton.bounds = CGRect(x: 300, y: 300, width: 250, height: 50)
@@ -58,7 +58,7 @@ class TimerViewController: UIViewController {
     func restartButton(){
         resetButton = UIButton(type: .system)
         resetButton.backgroundColor = UIColor.blue
-        resetButton.setTitleColor( .black, for: .normal)
+        resetButton.setTitleColor( .white, for: .normal)
         resetButton.setTitle("Restart", for: .normal)
         resetButton.translatesAutoresizingMaskIntoConstraints = false
         resetButton.bounds = CGRect(x: 300, y: 300, width: 250, height: 50)
