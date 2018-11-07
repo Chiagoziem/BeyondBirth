@@ -42,7 +42,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
         let ref = DatabaseRef.child("appointments").child(uid!)
         
         ref.queryOrdered(byChild: "date").observe(.childAdded, with: { (snapshot) in
-            if let apptSnapshots = snapshot.value as? [String: AnyObject] {
+            if let apptSnapshots = snapshot.value as? [String : Any] {
                 let appt = Appointment(key: apptSnapshots["key"] as! String,
                                        name: apptSnapshots["name"] as! String,
                                        dateString: apptSnapshots["dateString"] as! String,

@@ -99,4 +99,10 @@ class HomeViewController: UIViewController {
         calendarButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
+    // MARK: - for tests
+    
+    func getEmail() -> String {
+        return (Auth.auth().currentUser?.email)!
+    }
+    
 }

@@ -69,9 +69,9 @@ class CustomCell: UICollectionViewCell{
         backgroundColor = UIColor.lightGray
         addSubview(labelA)
         // Horizontal Constraint
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-12-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": labelA]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-12-[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0": labelA]))
         // Vertical Constraint
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-12-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": labelA]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-12-[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0": labelA]))
     }
     
     required init?(coder aDecoder: NSCoder) {

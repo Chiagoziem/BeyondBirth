@@ -11,7 +11,7 @@ import Firebase
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
-    var loggedInUser = LoggedInUser()
+    var loggedInUser: LoggedInUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            self.loggedInUser.email = (values["email"] as! String)
+            let user = LoggedInUser(email: values["email"] as! String)
+            self.loggedInUser = user
         })
     }
     
@@ -72,8 +73,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             }
             
             let uid = user.uid
-            let values = ["email": email]
-            self.registerUserIntoDatabaseWithUID(uid, values: values as [String : Any])
+            let values = ["email": email] as [String : Any]
+            self.registerUserIntoDatabaseWithUID(uid, values: values)
             
             self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         }
