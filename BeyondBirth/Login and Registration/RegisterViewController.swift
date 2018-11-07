@@ -98,11 +98,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Switches focus to next text field
+    // Also allows tabbing between text fields when running the app on the simulator
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTextField.resignFirstResponder()
         
         if textField == emailTextField {
-            passwordTextField.becomeFirstResponder()
+            nameTextField.becomeFirstResponder()
         } else if textField == nameTextField {
             passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
@@ -152,7 +153,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     var emailTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.delegate = self
+//        textField.delegate = self
         textField.placeholder = "Email"
         textField.textAlignment = .center
         textField.backgroundColor = UIColor.white
@@ -169,7 +170,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     var nameTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.delegate = self
+//        textField.delegate = self
         textField.placeholder = "Name"
         textField.textAlignment = .center
         textField.backgroundColor = UIColor.white

@@ -33,7 +33,7 @@ class TimerViewController: UIViewController {
         playButton.bounds = CGRect(x: 300, y: 300, width: 250, height: 50)
         playButton.center = CGPoint(x: 200, y: 400)
         playButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        playButton.addTarget(self, action: #selector(start(_:)), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(start), for: .touchUpInside)
         view.addSubview(playButton)
         
     }
@@ -49,7 +49,7 @@ class TimerViewController: UIViewController {
         pauseButton.bounds = CGRect(x: 300, y: 300, width: 250, height: 50)
         pauseButton.center = CGPoint(x: 200, y: 500)
         pauseButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        pauseButton.addTarget(self, action: #selector(stop(_:)), for: .touchUpInside)
+        pauseButton.addTarget(self, action: #selector(stop), for: .touchUpInside)
         view.addSubview(pauseButton)
     }
     
@@ -64,7 +64,7 @@ class TimerViewController: UIViewController {
         resetButton.bounds = CGRect(x: 300, y: 300, width: 250, height: 50)
         resetButton.center = CGPoint(x: 200, y: 600)
         resetButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-        resetButton.addTarget(self, action: #selector(reset(_:)), for: .touchUpInside)
+        resetButton.addTarget(self, action: #selector(reset), for: .touchUpInside)
         view.addSubview(resetButton)
     }
     
@@ -91,6 +91,7 @@ class TimerViewController: UIViewController {
     
     // calls all views
     func setUpViews(){
+        view.backgroundColor = .white
         startButton()
         stopButton()
         restartButton()
@@ -99,19 +100,19 @@ class TimerViewController: UIViewController {
     
     // action functions
     // start
-    @IBAction func start(_ sender: UIButton){
+    @objc  func start() {
         [timer.invalidate()] // this takes care of speeding up clock on multiple clicks on start
 
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TimerViewController.action), userInfo: nil, repeats: true)
 
     }
     // stop
-    @IBAction func stop(_ sender: UIButton){
+    @objc func stop(){
         timer.invalidate()
     }
     
     // reset
-    @IBAction func reset(_ sender: UIButton){
+    @objc func reset(_ sender: UIButton){
         timer.invalidate()
         //fractions = 0
         seconds = 0
