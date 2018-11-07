@@ -20,7 +20,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         setupViews()
     }
     
-    func registerUserIntoDatabaseWithUID(_ uid: String, values: [String: Any]) {
+    func registerUserIntoDatabaseWithUID(_ uid: String, _ values: [String: Any]) {
         let ref = Database.database().reference()
         let usersReference = ref.child("users").child(uid)
         
@@ -30,7 +30,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
-            let user = LoggedInUser(email: values["email"] as! String)
+            let user = LoggedInUser(email: values["email"] as! String, name: values["name"] as! String)
             self.loggedInUser = user
         })
     }
@@ -44,6 +44,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     @objc func handleRegisterButton() {
         guard let email = emailTextField.text,
+            let name = nameTextField.text,
             let password = passwordTextField.text,
             let repeatedPassword = repeatPasswordTextField.text else {
                 print("Form is not valid")
@@ -73,8 +74,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             }
             
             let uid = user.uid
-            let values = ["email": email] as [String : Any]
-            self.registerUserIntoDatabaseWithUID(uid, values: values)
+            
+            let values = [
+                "email": email,
+                "name": name
+            ] as [String : Any]
+            
+            self.registerUserIntoDatabaseWithUID(uid, values)
             
             self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         }
@@ -97,6 +103,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         if textField == emailTextField {
             passwordTextField.becomeFirstResponder()
+        } else if textField == nameTextField {
+            passwordTextField.becomeFirstResponder()
         } else if textField == passwordTextField {
             repeatPasswordTextField.becomeFirstResponder()
         } else if textField == repeatPasswordTextField {
@@ -111,6 +119,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     func setupViews() {
         view.addSubview(logo)
         view.addSubview(emailTextField)
+        view.addSubview(nameTextField)
         view.addSubview(passwordTextField)
         view.addSubview(repeatPasswordTextField)
         view.addSubview(registerButton)
@@ -118,6 +127,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         setupLogo()
         setupEmailTextField()
+        setupNameTextField()
         setupPasswordTextField()
         setupRepeatPasswordTextField()
         setupRegisterButton()
@@ -139,7 +149,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         logo.heightAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
-    lazy var emailTextField: UITextField = {
+    var emailTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
@@ -156,6 +166,23 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         emailTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
+    var nameTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
+        textField.placeholder = "Name"
+        textField.textAlignment = .center
+        textField.backgroundColor = UIColor.white
+        return textField
+    }()
+    
+    func setupNameTextField() {
+        nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nameTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 12).isActive = true
+        nameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/5).isActive = true
+        nameTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+    
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -170,7 +197,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     func setupPasswordTextField() {
         passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 12).isActive = true
+        passwordTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 12).isActive = true
         passwordTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4/5).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
