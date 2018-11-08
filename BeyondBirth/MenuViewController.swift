@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import Firebase
 
-class MenuController: UIViewController {
-
+class MenuViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor(r: 250, g: 255, b: 0)
+        
+        // check if the user is logged in before allowing the user to see/use the other capabilities
+        checkIfUserIsLoggedIn()
+        
+        // design views
+        setupViews()
+    }
+    
+    func setupViews() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        
+        //        view.backgroundColor = UIColor(r: 250, g: 255, b: 0)
+        view.backgroundColor = .white
         
         view.addSubview(heartButton)
         view.addSubview(journalButton)
@@ -32,31 +44,58 @@ class MenuController: UIViewController {
         setupgroups()
         setupreports()
         setuptimer()
+    }
+
+    // checks if the current user is logged in
+    func checkIfUserIsLoggedIn() {
+        // if uid is nil, the user is not logged in
+        if Auth.auth().currentUser?.uid == nil {
+            // show login view
+            perform(#selector(handleLogin), with: nil, afterDelay: 0)
+        }
+        // else, the user is logged in
+    }
+    
+    // MARK: - button actions
+    
+    // presents login view
+    @objc func handleLogin() {
+        present(LoginViewController(), animated: true, completion: nil)
+    }
+    
+    // log out the current user
+    @objc func handleLogout() {
+        do {
+            try Auth.auth().signOut()
+        } catch let logoutError {
+            print(logoutError)
+        }
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        // present login view
+        present(LoginViewController(), animated: true, completion: nil)
     }
     
-    // Logout - move to different page
-    @objc func handleLogout(){
-        self.navigationController?.pushViewController(LoginViewController(), animated: true)
-    }
-    
-        @objc func timer(){
+    @objc func timer() {
         self.navigationController?.pushViewController(TimerViewController(), animated: true)
     }
     
-        @objc func video(){
-        self.navigationController?.pushViewController(BreathingExcercisesViewController(), animated: true)
+    @objc func video() {
+        // creates the CollectionViewController for breathing exercises
+        let flowLayout = UICollectionViewFlowLayout()
+        let customCollectionViewController = CustomCollectionViewController(collectionViewLayout: flowLayout)
+        self.navigationController?.pushViewController(customCollectionViewController, animated: true)
     }
     
-        @objc func calendar(){
+    @objc func calendar() {
         self.navigationController?.pushViewController(CalendarViewController(), animated: true)
     }
     
-        @objc func journal(){
-        self.navigationController?.pushViewController(JournalController(), animated: true)
+    @objc func journal() {
+        self.navigationController?.pushViewController(JournalViewController(), animated: true)
     }
-
+    
+    // MARK: - views
+    
     let heartButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
@@ -110,8 +149,7 @@ class MenuController: UIViewController {
         return button
     }()
     
-    let groupsButton
-        : UIButton = {
+    let groupsButton: UIButton = {
             let button = UIButton(type: .system)
             button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
             button.setTitle("Support groups", for: .normal )
@@ -138,13 +176,11 @@ class MenuController: UIViewController {
         button.setTitleColor(UIColor.yellow, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(timer), for: .touchUpInside)
         return button
     }()
-
     
-    // constraints
-    
-    
+    // MARK: - constraints
     
     func setupheart(){
         heartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -166,7 +202,7 @@ class MenuController: UIViewController {
         videoButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         videoButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
-
+    
     func setupResource(){
         // add constraints for x and y
         resourcesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -174,7 +210,7 @@ class MenuController: UIViewController {
         resourcesButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         resourcesButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
-
+    
     func setupappointment(){
         appointmentButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         appointmentButton.topAnchor.constraint(equalTo: resourcesButton.bottomAnchor, constant: 12).isActive = true
@@ -192,7 +228,6 @@ class MenuController: UIViewController {
     func setupreports(){
         reportsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         reportsButton.topAnchor.constraint(equalTo: groupsButton.bottomAnchor, constant: 12).isActive = true
-        //reportsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         reportsButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         reportsButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
@@ -200,7 +235,6 @@ class MenuController: UIViewController {
     func setuptimer(){
         timerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         timerButton.topAnchor.constraint(equalTo: reportsButton.bottomAnchor, constant: 12).isActive = true
-        //reportsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         timerButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         timerButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }

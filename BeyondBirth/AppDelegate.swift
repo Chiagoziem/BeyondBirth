@@ -22,12 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        // creates the CollectionViewController for breathing exercises
-        let flowLayout = UICollectionViewFlowLayout()
-        let customCollectionViewController = CustomCollectionViewController(collectionViewLayout: flowLayout)
+        
         
         // creates navigation controller
-        let nav = UINavigationController(rootViewController: HomeViewController())
+        let nav = UINavigationController(rootViewController: MenuViewController())
         window?.rootViewController = nav
         
         // configure firebase
