@@ -2,7 +2,7 @@
 //  MenuController.swift
 //  team7
 //
-//  Created by Admin on 11/7/18.
+//  Created by Chiagoziem on 11/7/18.
 //  Copyright © 2018 Admin. All rights reserved.
 //
 
@@ -32,6 +32,13 @@ class MenuController: UIViewController {
         setupgroups()
         setupreports()
         setuptimer()
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+    }
+    
+    // Logout - move to different page
+    @objc func handleLogout(){
+        self.navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
         @objc func timer(){
@@ -191,11 +198,11 @@ class MenuController: UIViewController {
     }
     
     func setuptimer(){
-        reportsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        reportsButton.topAnchor.constraint(equalTo: reportsButton.bottomAnchor, constant: 12).isActive = true
+        timerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        timerButton.topAnchor.constraint(equalTo: reportsButton.bottomAnchor, constant: 12).isActive = true
         //reportsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        reportsButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        reportsButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        timerButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
+        timerButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     func preferredStatusBarStyle() -> UIStatusBarStyle{
