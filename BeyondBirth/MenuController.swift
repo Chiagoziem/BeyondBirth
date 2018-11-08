@@ -22,6 +22,7 @@ class MenuController: UIViewController {
         view.addSubview(appointmentButton)
         view.addSubview(groupsButton)
         view.addSubview(reportsButton)
+        view.addSubview(timerButton)
         
         setupheart()
         setupjournal()
@@ -30,6 +31,23 @@ class MenuController: UIViewController {
         setupappointment()
         setupgroups()
         setupreports()
+        setuptimer()
+    }
+    
+        @objc func timer(){
+        self.navigationController?.pushViewController(TimerViewController(), animated: true)
+    }
+    
+        @objc func video(){
+        self.navigationController?.pushViewController(BreathingExcercisesViewController(), animated: true)
+    }
+    
+        @objc func calendar(){
+        self.navigationController?.pushViewController(CalendarViewController(), animated: true)
+    }
+    
+        @objc func journal(){
+        self.navigationController?.pushViewController(JournalController(), animated: true)
     }
 
     let heartButton: UIButton = {
@@ -49,6 +67,7 @@ class MenuController: UIViewController {
         button.setTitleColor(UIColor.yellow, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(journal), for: .touchUpInside)
         return button
     }()
     
@@ -59,6 +78,7 @@ class MenuController: UIViewController {
         button.setTitleColor(UIColor.yellow, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(video), for: .touchUpInside)
         return button
     }()
     
@@ -79,6 +99,7 @@ class MenuController: UIViewController {
         button.setTitleColor(UIColor.yellow, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(calendar), for: .touchUpInside)
         return button
     }()
     
@@ -94,6 +115,16 @@ class MenuController: UIViewController {
     }()
     
     let reportsButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
+        button.setTitle("Reports", for: .normal )
+        button.setTitleColor(UIColor.yellow, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let timerButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
         button.setTitle("Reports", for: .normal )
@@ -154,6 +185,14 @@ class MenuController: UIViewController {
     func setupreports(){
         reportsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         reportsButton.topAnchor.constraint(equalTo: groupsButton.bottomAnchor, constant: 12).isActive = true
+        //reportsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        reportsButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
+        reportsButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+    
+    func setuptimer(){
+        reportsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        reportsButton.topAnchor.constraint(equalTo: reportsButton.bottomAnchor, constant: 12).isActive = true
         //reportsButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         reportsButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         reportsButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
