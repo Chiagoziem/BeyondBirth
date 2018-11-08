@@ -22,8 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        
-        
         // creates navigation controller
         let nav = UINavigationController(rootViewController: MenuViewController())
         window?.rootViewController = nav

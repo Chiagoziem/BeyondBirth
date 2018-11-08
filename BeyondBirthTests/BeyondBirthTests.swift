@@ -20,13 +20,15 @@ class BeyondBirthTests: XCTestCase {
         XCTAssertEqual(helloWorld, "hello")
     }
     
+    // test that the appt object's date property is an empty string
     func testApptIsAnEmptyString() {
         let appt = Appointment(key: "", name: "", dateString: "", date: "", notes: "")
         XCTAssertEqual(appt.date, "")
     }
     
+    // test that the user object's email property is an empty string
     func testUserEmailIsAnEmptyString() {
-        let user = LoggedInUser(email: "")
+        let user = LoggedInUser(email: "", name: "")
         XCTAssertEqual(user.email, "")
     }
     

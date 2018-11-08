@@ -15,7 +15,7 @@
 
 import UIKit
 
-class CustomCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class BreathingExercisesController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let customCellIndetifier = "someString"
 
