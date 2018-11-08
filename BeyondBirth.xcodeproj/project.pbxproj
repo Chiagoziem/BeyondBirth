@@ -127,10 +127,9 @@
 			children = (
 				800C4E17217139040006A54B /* AppDelegate.swift */,
 				80F963B321834BCD001047D4 /* HomeViewController.swift */,
-				80C087D2218377BB006C621B /* CalendarViewController.swift */,
-				80C087D421837A19006C621B /* AddCalendarItemViewController.swift */,
 				804343B1218CCAED0097D8C3 /* TimerViewController.swift */,
 				8079EADA2193A4290021D50F /* BreathingExercisesViewController.swift */,
+				8079EADC2193B2760021D50F /* Calendar */,
 				80C087D021837063006C621B /* Login and Registration */,
 				80C087D12183708E006C621B /* Models */,
 				800C4E1E217139090006A54B /* Assets.xcassets */,
@@ -139,6 +138,15 @@
 				80C087CC2183591E006C621B /* GoogleService-Info.plist */,
 			);
 			path = BeyondBirth;
+			sourceTree = "<group>";
+		};
+		8079EADC2193B2760021D50F /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				80C087D2218377BB006C621B /* CalendarViewController.swift */,
+				80C087D421837A19006C621B /* AddCalendarItemViewController.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		80BA7CC4218F967100BF95C2 /* BeyondBirthTests */ = {
