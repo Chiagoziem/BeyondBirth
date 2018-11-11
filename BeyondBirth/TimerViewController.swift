@@ -5,11 +5,11 @@
 // ---------------------------------------------
 // the code below runs a simple stopwatch
 // it starts at seconds, and increments
-// untill stopped or reset.
+// until stopped or reset.
 // there is no limit to the time, it will
-// run infinitly if needed
+// run infinitly if needed 38
 // ---------------------------------------------
-// code comment word count: 81
+// code comment word count: 115
 
 import UIKit
 
@@ -34,7 +34,6 @@ class TimerViewController: UIViewController {
         playButton.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         playButton.addTarget(self, action: #selector(start), for: .touchUpInside)
         view.addSubview(playButton)
-        
     }
     
     // pause button
@@ -75,13 +74,11 @@ class TimerViewController: UIViewController {
         lb.textColor = .black
         lb.font = UIFont.systemFont(ofSize: 50)
         lb.center = CGPoint(x: 200, y: 200)
-        
         return lb
         
     }()
     
     func timerLB(){
-        
         view.addSubview(TimerLable)
         action()
     }
@@ -102,7 +99,7 @@ class TimerViewController: UIViewController {
         // this takes care of speeding up clock on multiple clicks on start
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TimerViewController.action), userInfo: nil, repeats: true)
         nil, repeats: true)
-        // to test if start action works
+        // to test if start action works 71
         print("starting timer")
 
     }
@@ -116,7 +113,6 @@ class TimerViewController: UIViewController {
     // reset
     @objc func reset(_ sender: UIButton){
         timer.invalidate()
-        //fractions = 0
         seconds = 0
         minutes = 0
         hours = 0
@@ -137,7 +133,7 @@ class TimerViewController: UIViewController {
         if minutes == 60{
             hours += 1
             minutes = 0
-            // to test if counting is properly working
+            // to test if counting is properly working 110
             print("hour")
         }
         
