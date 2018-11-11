@@ -100,13 +100,17 @@ class TimerViewController: UIViewController {
     @objc  func start() {
         [timer.invalidate()]
         // this takes care of speeding up clock on multiple clicks on start
-
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TimerViewController.action), userInfo: nil, repeats: true)
+        nil, repeats: true)
+        // to test if start action works
+        print("starting timer")
 
     }
     // stop
     @objc func stop(){
         timer.invalidate()
+        // to test if stop action works
+        print("stopping timer")
     }
     
     // reset
@@ -117,6 +121,8 @@ class TimerViewController: UIViewController {
         minutes = 0
         hours = 0
         TimerLable.text = ("0:0:0")
+        // to test if reset action works
+        print("resting timer")
     }
     
     // runs count so we can track seonds, minutes, and hours
@@ -125,10 +131,14 @@ class TimerViewController: UIViewController {
         if seconds == 60{
             minutes += 1
             seconds = 0
+            // to test if counting is properly working
+            print("minute")
         }
         if minutes == 60{
             hours += 1
             minutes = 0
+            // to test if counting is properly working
+            print("hour")
         }
         
         TimerLable.text = "\(hours):\(minutes):\(seconds) "
