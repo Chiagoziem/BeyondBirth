@@ -82,7 +82,7 @@ class MenuViewController: UIViewController {
     @objc func video() {
         // creates the BreathingExercisesController for breathing exercises
         let flowLayout = UICollectionViewFlowLayout()
-        let customCollectionViewController = BreathingExercisesController(collectionViewLayout: flowLayout)
+        let customCollectionViewController = BreathingExercisesViewController(collectionViewLayout: flowLayout)
         self.navigationController?.pushViewController(customCollectionViewController, animated: true)
     }
     

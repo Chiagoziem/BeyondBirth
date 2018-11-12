@@ -140,5 +140,3 @@ class TimerViewController: UIViewController {
         setUpViews()
     }
 }
-
-

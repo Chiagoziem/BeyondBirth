@@ -15,21 +15,22 @@
 
 import UIKit
 
-class BreathingExercisesController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class BreathingExercisesViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let customCellIndetifier = "someString"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(CustomCell.self, forCellWithReuseIdentifier: customCellIndetifier)
     }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: customCellIndetifier, for: indexPath) as! CustomCell
         customCell.labelA.text = text[indexPath.item]
-    return customCell
+        return customCell
     }
+    
     // to add more Breathing Exercises, just add string to list below
     // would like to find a way to set individual sizes for each CustomCell
     // also this setup allows for coder to add in images and videos as well
@@ -44,16 +45,16 @@ class BreathingExercisesController: UICollectionViewController, UICollectionView
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 700)
     }
-
+    
 }
 
-class CustomCell: UICollectionViewCell{
+class CustomCell: UICollectionViewCell {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setUpView()
-
+        setupView()
     }
+    
     // label
     let labelA: UILabel = {
         let label = UILabel()
@@ -65,7 +66,7 @@ class CustomCell: UICollectionViewCell{
         return label
     }()
     
-    func setUpView(){
+    func setupView() {
         backgroundColor = UIColor.lightGray
         addSubview(labelA)
         // Horizontal Constraint
@@ -79,4 +80,3 @@ class CustomCell: UICollectionViewCell{
     }
     
 }
-

@@ -112,7 +112,9 @@ extension CalendarViewController: UITableViewDelegate {
         if (editingStyle == .delete) {
             let appt = appointments[indexPath.row]
             
-            let ref = DatabaseRef.child("appointments").child(appt.key!)
+            let uid = Auth.auth().currentUser?.uid
+            
+            let ref = DatabaseRef.child("appointments").child(uid!).child(appt.key!)
             
             ref.removeValue { (error, ref) in
                 if error != nil {
