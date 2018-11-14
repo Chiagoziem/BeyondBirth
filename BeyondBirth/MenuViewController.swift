@@ -24,25 +24,16 @@ class MenuViewController: UIViewController {
     func setupViews() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         
-        //        view.backgroundColor = UIColor(r: 250, g: 255, b: 0)
         view.backgroundColor = .white
         
-        view.addSubview(heartButton)
         view.addSubview(journalButton)
-        view.addSubview(videoButton)
-        view.addSubview(resourcesButton)
+        view.addSubview(breathingButton)
         view.addSubview(appointmentButton)
-        view.addSubview(groupsButton)
-        view.addSubview(reportsButton)
         view.addSubview(timerButton)
         
-        setupheart()
         setupjournal()
-        setupvideo()
-        setupResource()
+        setupbreathing()
         setupappointment()
-        setupgroups()
-        setupreports()
         setuptimer()
     }
 
@@ -79,7 +70,7 @@ class MenuViewController: UIViewController {
         self.navigationController?.pushViewController(TimerViewController(), animated: true)
     }
     
-    @objc func video() {
+    @objc func breathing() {
         // creates the BreathingExercisesController for breathing exercises
         let flowLayout = UICollectionViewFlowLayout()
         let customCollectionViewController = BreathingExercisesViewController(collectionViewLayout: flowLayout)
@@ -95,17 +86,7 @@ class MenuViewController: UIViewController {
     }
     
     // MARK: - views
-    
-    let heartButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
-        button.setTitle("Heart rate", for: .normal )
-        button.setTitleColor(UIColor.yellow, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
+
     let journalButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
@@ -117,27 +98,17 @@ class MenuViewController: UIViewController {
         return button
     }()
     
-    let videoButton: UIButton = {
+    let breathingButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
-        button.setTitle("Jin shin Jyutsu", for: .normal )
+        button.setTitle("Breathing Exercises", for: .normal )
         button.setTitleColor(UIColor.yellow, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(video), for: .touchUpInside)
+        button.addTarget(self, action: #selector(breathing), for: .touchUpInside)
         return button
     }()
-    
-    let resourcesButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
-        button.setTitle("Resources", for: .normal )
-        button.setTitleColor(UIColor.yellow, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
+
     let appointmentButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
@@ -149,30 +120,10 @@ class MenuViewController: UIViewController {
         return button
     }()
     
-    let groupsButton: UIButton = {
-            let button = UIButton(type: .system)
-            button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
-            button.setTitle("Support groups", for: .normal )
-            button.setTitleColor(UIColor.yellow, for: .normal)
-            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            return button
-    }()
-    
-    let reportsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
-        button.setTitle("Reports", for: .normal )
-        button.setTitleColor(UIColor.yellow, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     let timerButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
-        button.setTitle("Reports", for: .normal )
+        button.setTitle("Timer", for: .normal )
         button.setTitleColor(UIColor.yellow, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -182,70 +133,41 @@ class MenuViewController: UIViewController {
     
     // MARK: - constraints
     
-    func setupheart(){
-        heartButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        heartButton.bottomAnchor.constraint(equalTo: journalButton.topAnchor, constant: -12).isActive = true
-        heartButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        heartButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-    }
-    
-    func setupjournal(){
+    func setupjournal() {
         journalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        journalButton.bottomAnchor.constraint(equalTo: videoButton.topAnchor, constant: -12).isActive = true
+        journalButton.bottomAnchor.constraint(equalTo: breathingButton.topAnchor, constant: -12).isActive = true
         journalButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         journalButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
-    func setupvideo(){
-        videoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        videoButton.bottomAnchor.constraint(equalTo: resourcesButton.topAnchor, constant: -12).isActive = true
-        videoButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        videoButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    func setupbreathing() {
+        breathingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        breathingButton.bottomAnchor.constraint(equalTo: appointmentButton.topAnchor, constant: -12).isActive = true
+        breathingButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
+        breathingButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
-    
-    func setupResource(){
-        // add constraints for x and y
-        resourcesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        resourcesButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        resourcesButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        resourcesButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-    }
-    
-    func setupappointment(){
+
+    func setupappointment() {
         appointmentButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        appointmentButton.topAnchor.constraint(equalTo: resourcesButton.bottomAnchor, constant: 12).isActive = true
+        appointmentButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         appointmentButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         appointmentButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
-    func setupgroups(){
-        groupsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        groupsButton.topAnchor.constraint(equalTo: appointmentButton.bottomAnchor, constant: 12).isActive = true
-        groupsButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        groupsButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-    }
-    
-    func setupreports(){
-        reportsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        reportsButton.topAnchor.constraint(equalTo: groupsButton.bottomAnchor, constant: 12).isActive = true
-        reportsButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        reportsButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-    }
-    
-    func setuptimer(){
+    func setuptimer() {
         timerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        timerButton.topAnchor.constraint(equalTo: reportsButton.bottomAnchor, constant: 12).isActive = true
+        timerButton.topAnchor.constraint(equalTo: appointmentButton.bottomAnchor, constant: 12).isActive = true
         timerButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         timerButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
-    func preferredStatusBarStyle() -> UIStatusBarStyle{
+    func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .lightContent
     }
 }
 
 // so i dont have to type color: num/255 every time
-extension UIColor{
+extension UIColor {
     
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat){
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
