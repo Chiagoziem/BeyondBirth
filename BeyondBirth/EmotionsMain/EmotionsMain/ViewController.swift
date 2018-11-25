@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         bt.setTitleColor(UIColor.black, for: .normal)
         bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         bt.translatesAutoresizingMaskIntoConstraints = false
-        //bt.addTarget(self, action: #selector(happy), for: .touchUpInside)
+        bt.addTarget(self, action: #selector(emotionViewControler), for: .touchUpInside)
         return bt
     }()
     
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
         bt.setTitleColor(UIColor.black, for: .normal)
         bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         bt.translatesAutoresizingMaskIntoConstraints = false
-        //bt.addTarget(self, action: #selector(happy), for: .touchUpInside)
+        bt.addTarget(self, action: #selector(emotionViewControler), for: .touchUpInside)
         return bt
     }()
     
