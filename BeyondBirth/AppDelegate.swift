@@ -13,21 +13,28 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // configure firebase
+        FirebaseApp.configure()
         
         // allows for programmatically creating views
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
         // creates navigation controller
-        let nav = UINavigationController(rootViewController: MenuViewController())
+//        let nav = UINavigationController(rootViewController: MenuViewController())
+//        window?.rootViewController = nav
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        let customCollectionViewController = EmotionViewController(collectionViewLayout: flowLayout)
+        let nav = UINavigationController(rootViewController: customCollectionViewController)
         window?.rootViewController = nav
         
-        // configure firebase
-        FirebaseApp.configure()
+        
         
         return true
     }
