@@ -14,9 +14,9 @@
 		800C4E22217139090006A54B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 800C4E20217139090006A54B /* LaunchScreen.storyboard */; };
 		800C4E2A217158550006A54B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C4E29217158550006A54B /* RegisterViewController.swift */; };
 		803756A821A9F21C007444A4 /* EmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803756A721A9F21C007444A4 /* EmotionViewController.swift */; };
-		803756AA21A9F25C007444A4 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803756A921A9F25C007444A4 /* PhotoCell.swift */; };
 		803A682E2189500800A8B9F9 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803A682D2189500800A8B9F9 /* Appointment.swift */; };
 		804343B2218CCAED0097D8C3 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804343B1218CCAED0097D8C3 /* TimerViewController.swift */; };
+		805E916221AB9D94003D3D9A /* EmotionsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805E916121AB9D93003D3D9A /* EmotionsMainViewController.swift */; };
 		8079EADB2193A4290021D50F /* BreathingExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8079EADA2193A4290021D50F /* BreathingExercisesViewController.swift */; };
 		8079EADE2193B5610021D50F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8079EADD2193B5610021D50F /* MenuViewController.swift */; };
 		8079EAE02193C0B80021D50F /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8079EADF2193C0B70021D50F /* JournalViewController.swift */; };
@@ -49,9 +49,9 @@
 		800C4E23217139090006A54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		800C4E29217158550006A54B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		803756A721A9F21C007444A4 /* EmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewController.swift; sourceTree = "<group>"; };
-		803756A921A9F25C007444A4 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		803A682D2189500800A8B9F9 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		804343B1218CCAED0097D8C3 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		805E916121AB9D93003D3D9A /* EmotionsMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionsMainViewController.swift; sourceTree = "<group>"; };
 		8079EADA2193A4290021D50F /* BreathingExercisesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreathingExercisesViewController.swift; sourceTree = "<group>"; };
 		8079EADD2193B5610021D50F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8079EADF2193C0B70021D50F /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 				804343B1218CCAED0097D8C3 /* TimerViewController.swift */,
 				8079EADA2193A4290021D50F /* BreathingExercisesViewController.swift */,
 				8079EADF2193C0B70021D50F /* JournalViewController.swift */,
+				805E916121AB9D93003D3D9A /* EmotionsMainViewController.swift */,
 				803756A721A9F21C007444A4 /* EmotionViewController.swift */,
-				803756A921A9F25C007444A4 /* PhotoCell.swift */,
 				8079EADC2193B2760021D50F /* Calendar */,
 				80C087D021837063006C621B /* Login and Registration */,
 				80C087D12183708E006C621B /* Models */,
@@ -399,10 +399,10 @@
 				800C4E1A217139040006A54B /* LoginViewController.swift in Sources */,
 				803A682E2189500800A8B9F9 /* Appointment.swift in Sources */,
 				800C4E18217139040006A54B /* AppDelegate.swift in Sources */,
-				803756AA21A9F25C007444A4 /* PhotoCell.swift in Sources */,
 				8079EADE2193B5610021D50F /* MenuViewController.swift in Sources */,
 				80C087D521837A19006C621B /* AddCalendarItemViewController.swift in Sources */,
 				8079EADB2193A4290021D50F /* BreathingExercisesViewController.swift in Sources */,
+				805E916221AB9D94003D3D9A /* EmotionsMainViewController.swift in Sources */,
 				804343B2218CCAED0097D8C3 /* TimerViewController.swift in Sources */,
 				80C087CF21836B9D006C621B /* LoggedInUser.swift in Sources */,
 				803756A821A9F21C007444A4 /* EmotionViewController.swift in Sources */,

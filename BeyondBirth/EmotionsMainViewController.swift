@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  EmotionsMain
+//  EmotionsMainViewController.swift
+//  BeyondBirth
 //
 //  Created by Rachael Metzger on 11/25/18.
 //  Copyright © 2018 Rachael Metzger. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class EmotionsMainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,14 +18,14 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    // calls all fucntions
+    
+    // calls all functions
     func setupViews() {
         view.addSubview(happyButton)
         view.addSubview(sadButton)
         
         setUpHappy()
         setUpSad()
-        
     }
     
     // happy button
@@ -65,9 +65,7 @@ class ViewController: UIViewController {
         sadButton.bottomAnchor.constraint(equalTo: happyButton.topAnchor, constant: -12).isActive = true
         sadButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         sadButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-
     }
-
 
 }
 
