@@ -11,7 +11,7 @@ import Firebase
 
 class EmotionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let emotion = "sad" // comes from another view displaying emotions
+    var emotion = String()
     let cellId = "cellId"
     let database = Database.database().reference().child("emotionImages")
     let storage = Storage.storage()
@@ -130,3 +130,6 @@ class EmotionPhotoCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
+// FIXME: - need close window button

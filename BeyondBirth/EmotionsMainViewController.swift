@@ -9,7 +9,7 @@
 import UIKit
 
 class EmotionsMainViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -21,6 +21,8 @@ class EmotionsMainViewController: UIViewController {
     
     // calls all functions
     func setupViews() {
+        view.backgroundColor = UIColor.white
+        
         view.addSubview(happyButton)
         view.addSubview(sadButton)
         
@@ -36,7 +38,7 @@ class EmotionsMainViewController: UIViewController {
         bt.setTitleColor(UIColor.black, for: .normal)
         bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         bt.translatesAutoresizingMaskIntoConstraints = false
-        bt.addTarget(self, action: #selector(emotionViewControler), for: .touchUpInside)
+        bt.addTarget(self, action: #selector(goToEmotionViewController), for: .touchUpInside)
         return bt
     }()
     
@@ -48,9 +50,17 @@ class EmotionsMainViewController: UIViewController {
         bt.setTitleColor(UIColor.black, for: .normal)
         bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         bt.translatesAutoresizingMaskIntoConstraints = false
-        bt.addTarget(self, action: #selector(emotionViewControler), for: .touchUpInside)
+        bt.addTarget(self, action: #selector(goToEmotionViewController), for: .touchUpInside)
         return bt
     }()
+    
+    @objc func goToEmotionViewController(sender: UIButton!) {
+        let emotion = sender.titleLabel?.text!.lowercased()
+        let flowLayout = UICollectionViewFlowLayout()
+        let customCollectionViewController = EmotionViewController(collectionViewLayout: flowLayout)
+        customCollectionViewController.emotion = emotion!
+        navigationController?.present(customCollectionViewController, animated: true, completion: nil)
+    }
     
     // setting constraints
     func setUpHappy(){
