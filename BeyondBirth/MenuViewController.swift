@@ -30,11 +30,13 @@ class MenuViewController: UIViewController {
         view.addSubview(breathingButton)
         view.addSubview(appointmentButton)
         view.addSubview(timerButton)
+        view.addSubview(emotionButton)
         
         setupjournal()
         setupbreathing()
         setupappointment()
         setuptimer()
+        setupemotion()
     }
 
     // checks if the current user is logged in
@@ -66,8 +68,8 @@ class MenuViewController: UIViewController {
         present(LoginViewController(), animated: true, completion: nil)
     }
     
-    @objc func timer() {
-        self.navigationController?.pushViewController(TimerViewController(), animated: true)
+    @objc func journal() {
+        self.navigationController?.pushViewController(JournalViewController(), animated: true)
     }
     
     @objc func breathing() {
@@ -81,8 +83,12 @@ class MenuViewController: UIViewController {
         self.navigationController?.pushViewController(CalendarViewController(), animated: true)
     }
     
-    @objc func journal() {
-        self.navigationController?.pushViewController(JournalViewController(), animated: true)
+    @objc func timer() {
+        self.navigationController?.pushViewController(TimerViewController(), animated: true)
+    }
+    
+    @objc func emotion() {
+        self.navigationController?.pushViewController(EmotionsMainViewController(), animated: true)
     }
     
     // MARK: - views
@@ -131,6 +137,17 @@ class MenuViewController: UIViewController {
         return button
     }()
     
+    let emotionButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
+        button.setTitle("Emotions", for: .normal )
+        button.setTitleColor(UIColor.yellow, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(emotion), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - constraints
     
     func setupjournal() {
@@ -159,6 +176,13 @@ class MenuViewController: UIViewController {
         timerButton.topAnchor.constraint(equalTo: appointmentButton.bottomAnchor, constant: 12).isActive = true
         timerButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         timerButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    }
+    
+    func setupemotion() {
+        emotionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        emotionButton.topAnchor.constraint(equalTo: timerButton.bottomAnchor, constant: 12).isActive = true
+        emotionButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
+        emotionButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     func preferredStatusBarStyle() -> UIStatusBarStyle {

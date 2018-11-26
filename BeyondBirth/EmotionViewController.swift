@@ -130,6 +130,3 @@ class EmotionPhotoCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
-// FIXME: - need close window button

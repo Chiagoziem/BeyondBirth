@@ -59,7 +59,7 @@ class EmotionsMainViewController: UIViewController {
         let flowLayout = UICollectionViewFlowLayout()
         let customCollectionViewController = EmotionViewController(collectionViewLayout: flowLayout)
         customCollectionViewController.emotion = emotion!
-        navigationController?.present(customCollectionViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(customCollectionViewController, animated: true)
     }
     
     // setting constraints

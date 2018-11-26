@@ -26,17 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         // creates navigation controller
-//        let nav = UINavigationController(rootViewController: MenuViewController())
-//        window?.rootViewController = nav
-        
-//        let flowLayout = UICollectionViewFlowLayout()
-//        let customCollectionViewController = EmotionViewController(collectionViewLayout: flowLayout)
-//        let nav = UINavigationController(rootViewController: customCollectionViewController)
-//        window?.rootViewController = nav
-        
-        let nav = UINavigationController(rootViewController: EmotionsMainViewController())
-        window?.rootViewController = nav
-        
+        let nav = UINavigationController(rootViewController: MenuViewController())
+        window?.rootViewController = nav        
         
         return true
     }
