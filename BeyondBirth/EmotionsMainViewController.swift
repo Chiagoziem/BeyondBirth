@@ -1,11 +1,14 @@
-//
+//  Rachael Metzger
+//  Beyond Birth Senior Design
 //  EmotionsMainViewController.swift
-//  BeyondBirth
-//
-//  Created by Rachael Metzger on 11/25/18.
-//  Copyright © 2018 Rachael Metzger. All rights reserved.
-//
-
+//  Emotions Main PageBeyond
+// --------------------------------------------------
+// The code below holds the buttons that connect to
+// the corresponding motivational images for that
+// emotion. To add more buttons, just copy code and
+// change label names 37
+// --------------------------------------------------
+// Word Count: 47
 import UIKit
 
 class EmotionsMainViewController: UIViewController {
