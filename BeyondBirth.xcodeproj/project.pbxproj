@@ -133,10 +133,11 @@
 			children = (
 				800C4E17217139040006A54B /* AppDelegate.swift */,
 				8079EADD2193B5610021D50F /* MenuViewController.swift */,
-				8079EADF2193C0B70021D50F /* JournalViewController.swift */,
-				8079EADA2193A4290021D50F /* BreathingExercisesViewController.swift */,
 				804343B1218CCAED0097D8C3 /* TimerViewController.swift */,
-				80BE0B3421AC601E00FBE18A /* Emotion */,
+				8079EADA2193A4290021D50F /* BreathingExercisesViewController.swift */,
+				8079EADF2193C0B70021D50F /* JournalViewController.swift */,
+				805E916121AB9D93003D3D9A /* EmotionsMainViewController.swift */,
+				803756A721A9F21C007444A4 /* EmotionViewController.swift */,
 				8079EADC2193B2760021D50F /* Calendar */,
 				80C087D021837063006C621B /* Login and Registration */,
 				80C087D12183708E006C621B /* Models */,
@@ -164,15 +165,6 @@
 				80BA7CC7218F967100BF95C2 /* Info.plist */,
 			);
 			path = BeyondBirthTests;
-			sourceTree = "<group>";
-		};
-		80BE0B3421AC601E00FBE18A /* Emotion */ = {
-			isa = PBXGroup;
-			children = (
-				805E916121AB9D93003D3D9A /* EmotionsMainViewController.swift */,
-				803756A721A9F21C007444A4 /* EmotionViewController.swift */,
-			);
-			path = Emotion;
 			sourceTree = "<group>";
 		};
 		80C087D021837063006C621B /* Login and Registration */ = {
