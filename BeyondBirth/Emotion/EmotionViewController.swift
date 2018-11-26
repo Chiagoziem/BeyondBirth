@@ -1,5 +1,5 @@
 //
-//  Emotion.swift
+//  EmotionViewController.swift
 //  BeyondBirth
 //
 //  Created by Jordan George on 11/24/18.
