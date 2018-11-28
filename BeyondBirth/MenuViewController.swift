@@ -26,19 +26,19 @@ class MenuViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        view.addSubview(journalButton)
+        //        view.addSubview(journalButton)
         view.addSubview(breathingButton)
         view.addSubview(appointmentButton)
         view.addSubview(timerButton)
         view.addSubview(emotionButton)
         
-        setupjournal()
+        //        setupjournal()
         setupbreathing()
         setupappointment()
         setuptimer()
         setupemotion()
     }
-
+    
     // checks if the current user is logged in
     func checkIfUserIsLoggedIn() {
         // if uid is nil, the user is not logged in
@@ -92,35 +92,35 @@ class MenuViewController: UIViewController {
     }
     
     // MARK: - views
-
-    let journalButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
-        button.setTitle("Journal", for: .normal )
-        button.setTitleColor(UIColor.yellow, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(journal), for: .touchUpInside)
-        return button
-    }()
+    
+    //    let journalButton: UIButton = {
+    //        let button = UIButton(type: .system)
+    //        button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
+    //        button.setTitle("Journal", for: .normal )
+    //        button.setTitleColor(UIColor.white, for: .normal)
+    //        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+    //        button.translatesAutoresizingMaskIntoConstraints = false
+    //        button.addTarget(self, action: #selector(journal), for: .touchUpInside)
+    //        return button
+    //    }()
     
     let breathingButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
         button.setTitle("Breathing Exercises", for: .normal )
-        button.setTitleColor(UIColor.yellow, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(breathing), for: .touchUpInside)
         return button
     }()
-
+    
     let appointmentButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
         button.setTitle("Appointments", for: .normal )
-        button.setTitleColor(UIColor.yellow, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(calendar), for: .touchUpInside)
         return button
@@ -130,8 +130,8 @@ class MenuViewController: UIViewController {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
         button.setTitle("Timer", for: .normal )
-        button.setTitleColor(UIColor.yellow, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(timer), for: .touchUpInside)
         return button
@@ -141,8 +141,8 @@ class MenuViewController: UIViewController {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
         button.setTitle("Emotions", for: .normal )
-        button.setTitleColor(UIColor.yellow, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(emotion), for: .touchUpInside)
         return button
@@ -150,12 +150,12 @@ class MenuViewController: UIViewController {
     
     // MARK: - constraints
     
-    func setupjournal() {
-        journalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        journalButton.bottomAnchor.constraint(equalTo: breathingButton.topAnchor, constant: -12).isActive = true
-        journalButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        journalButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-    }
+    //    func setupjournal() {
+    //        journalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    //        journalButton.bottomAnchor.constraint(equalTo: breathingButton.topAnchor, constant: -12).isActive = true
+    //        journalButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
+    //        journalButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    //    }
     
     func setupbreathing() {
         breathingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -163,7 +163,7 @@ class MenuViewController: UIViewController {
         breathingButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         breathingButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
-
+    
     func setupappointment() {
         appointmentButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         appointmentButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true

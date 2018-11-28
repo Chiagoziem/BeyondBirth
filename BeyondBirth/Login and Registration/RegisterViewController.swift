@@ -78,7 +78,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             let values = [
                 "email": email,
                 "name": name
-            ] as [String : Any]
+                ] as [String : Any]
             
             self.registerUserIntoDatabaseWithUID(uid, values)
             
@@ -153,7 +153,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     var emailTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-//        textField.delegate = self
+        //        textField.delegate = self
         textField.placeholder = "Email"
         textField.textAlignment = .center
         textField.backgroundColor = UIColor.white
@@ -170,7 +170,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     var nameTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-//        textField.delegate = self
+        //        textField.delegate = self
         textField.placeholder = "Name"
         textField.textAlignment = .center
         textField.backgroundColor = UIColor.white

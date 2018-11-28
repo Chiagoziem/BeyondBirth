@@ -14,7 +14,7 @@
 import UIKit
 
 class TimerViewController: UIViewController {
-
+    
     // variables
     var hours = 0
     var minutes = 0
@@ -97,11 +97,11 @@ class TimerViewController: UIViewController {
     @objc  func start() {
         [timer.invalidate()]
         // this takes care of speeding up clock on multiple clicks on start
-//        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TimerViewController.action), userInfo: nil, repeats: true)
-//        nil, repeats: true)
+        //        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TimerViewController.action), userInfo: nil, repeats: true)
+        //        nil, repeats: true)
         // to test if start action works 71
         print("starting timer")
-
+        
     }
     // stop
     @objc func stop(){

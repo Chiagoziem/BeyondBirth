@@ -1,5 +1,5 @@
 //
-//  Emotion.swift
+//  EmotionViewController.swift
 //  BeyondBirth
 //
 //  Created by Jordan George on 11/24/18.
@@ -11,7 +11,7 @@ import Firebase
 
 class EmotionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var emotion = String()
+    var emotionText = String()
     let cellId = "cellId"
     let database = Database.database().reference().child("emotionImages")
     let storage = Storage.storage()
@@ -20,15 +20,17 @@ class EmotionViewController: UICollectionViewController, UICollectionViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        downloadImagesFromFirebase()
+        // downloadImagesFromFirebase()
         manuallyGetImagesFromAssets()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        collectionView?.backgroundColor = UIColor.white
         
+        navigationItem.title = emotionText.capitalized
+        
+        // collection view configuration
+        collectionView?.backgroundColor = UIColor.white
         collectionView?.register(EmotionPhotoCell.self, forCellWithReuseIdentifier: cellId)
     }
     
@@ -55,7 +57,7 @@ class EmotionViewController: UICollectionViewController, UICollectionViewDelegat
     func downloadImagesFromFirebase() {
         var folderChild = ""
         
-        switch emotion {
+        switch emotionText {
         case "sad":
             folderChild = "sad" // display sad images
         case "happy":
@@ -63,7 +65,7 @@ class EmotionViewController: UICollectionViewController, UICollectionViewDelegat
         default:
             folderChild = ""
         }
-
+        
         database.child(folderChild).observe(.childAdded, with: { (snapshot) in
             let downloadURL = snapshot.value as! String
             let storageRef = self.storage.reference(forURL: downloadURL)
@@ -75,7 +77,7 @@ class EmotionViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     func manuallyGetImagesFromAssets() {
-        switch emotion {
+        switch emotionText {
         case "sad":
             picArrayNames = [
                 "IMG_0062",

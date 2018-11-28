@@ -17,7 +17,7 @@ class EmotionsMainViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -38,7 +38,7 @@ class EmotionsMainViewController: UIViewController {
         let bt = UIButton(type: .system)
         bt.backgroundColor = UIColor.blue
         bt.setTitle("Happy", for: .normal)
-        bt.setTitleColor(UIColor.black, for: .normal)
+        bt.setTitleColor(UIColor.white, for: .normal)
         bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         bt.translatesAutoresizingMaskIntoConstraints = false
         bt.addTarget(self, action: #selector(goToEmotionViewController), for: .touchUpInside)
@@ -50,7 +50,7 @@ class EmotionsMainViewController: UIViewController {
         let bt = UIButton(type: .system)
         bt.backgroundColor = UIColor.blue
         bt.setTitle("Sad", for: .normal)
-        bt.setTitleColor(UIColor.black, for: .normal)
+        bt.setTitleColor(UIColor.white, for: .normal)
         bt.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         bt.translatesAutoresizingMaskIntoConstraints = false
         bt.addTarget(self, action: #selector(goToEmotionViewController), for: .touchUpInside)
@@ -61,7 +61,7 @@ class EmotionsMainViewController: UIViewController {
         let emotion = sender.titleLabel?.text!.lowercased()
         let flowLayout = UICollectionViewFlowLayout()
         let customCollectionViewController = EmotionViewController(collectionViewLayout: flowLayout)
-        customCollectionViewController.emotion = emotion!
+        customCollectionViewController.emotionText = emotion!
         self.navigationController?.pushViewController(customCollectionViewController, animated: true)
     }
     
@@ -79,6 +79,6 @@ class EmotionsMainViewController: UIViewController {
         sadButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         sadButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
-
+    
 }
 
