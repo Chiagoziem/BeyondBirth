@@ -127,6 +127,12 @@ extension AppointmentViewController: UITableViewDelegate {
             }
         }
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc: AppointmentDetailsViewController = AppointmentDetailsViewController()
+        vc.appointment = appointments[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // formats the custom table view cell

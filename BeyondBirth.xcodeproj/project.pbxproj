@@ -13,6 +13,7 @@
 		800C4E1F217139090006A54B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 800C4E1E217139090006A54B /* Assets.xcassets */; };
 		800C4E22217139090006A54B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 800C4E20217139090006A54B /* LaunchScreen.storyboard */; };
 		800C4E2A217158550006A54B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800C4E29217158550006A54B /* RegisterViewController.swift */; };
+		800DFDE921AF86F900A6EC95 /* AppointmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800DFDE821AF86F900A6EC95 /* AppointmentDetailsViewController.swift */; };
 		803756A821A9F21C007444A4 /* EmotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803756A721A9F21C007444A4 /* EmotionViewController.swift */; };
 		803A682E2189500800A8B9F9 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803A682D2189500800A8B9F9 /* Appointment.swift */; };
 		804343B2218CCAED0097D8C3 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804343B1218CCAED0097D8C3 /* TimerViewController.swift */; };
@@ -48,6 +49,7 @@
 		800C4E21217139090006A54B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		800C4E23217139090006A54B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		800C4E29217158550006A54B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		800DFDE821AF86F900A6EC95 /* AppointmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentDetailsViewController.swift; sourceTree = "<group>"; };
 		803756A721A9F21C007444A4 /* EmotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewController.swift; sourceTree = "<group>"; };
 		803A682D2189500800A8B9F9 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		804343B1218CCAED0097D8C3 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				80C087D2218377BB006C621B /* AppointmentViewController.swift */,
 				80C087D421837A19006C621B /* AddAppointmentViewController.swift */,
+				800DFDE821AF86F900A6EC95 /* AppointmentDetailsViewController.swift */,
 			);
 			path = Appointment;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80C087D3218377BB006C621B /* AppointmentViewController.swift in Sources */,
+				800DFDE921AF86F900A6EC95 /* AppointmentDetailsViewController.swift in Sources */,
 				8079EAE02193C0B80021D50F /* JournalViewController.swift in Sources */,
 				800C4E2A217158550006A54B /* RegisterViewController.swift in Sources */,
 				800C4E1A217139040006A54B /* LoginViewController.swift in Sources */,
