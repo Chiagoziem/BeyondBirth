@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CalendarViewController: UIViewController, UITableViewDataSource {
+class AppointmentViewController: UIViewController, UITableViewDataSource {
     
     let reuseIdentifier = "cell"
     let DatabaseRef = Database.database().reference()
@@ -27,8 +27,8 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
         loadAppointments()
     }
     
-    @objc func goToAddCalendarItemViewController(){
-        self.navigationController?.pushViewController(AddCalendarItemViewController(), animated: true)
+    @objc func goToAddAppointmentItemViewController(){
+        self.navigationController?.pushViewController(AddAppointmentItemViewController(), animated: true)
     }
     
     func loadAppointments() {
@@ -62,7 +62,8 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
     // MARK: - view setup
     
     func setupViews() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToAddCalendarItemViewController))
+        navigationItem.title = "Appointments"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToAddAppointmentItemViewController))
         view.backgroundColor = .white
         view.addSubview(tableView)
         setupTableView()
@@ -85,7 +86,7 @@ class CalendarViewController: UIViewController, UITableViewDataSource {
 }
 
 // overrides table view functions needed for table view to work
-extension CalendarViewController: UITableViewDelegate {
+extension AppointmentViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appointments.count
     }

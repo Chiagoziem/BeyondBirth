@@ -23,8 +23,8 @@
 		80BA7CC6218F967100BF95C2 /* BeyondBirthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BA7CC5218F967100BF95C2 /* BeyondBirthTests.swift */; };
 		80C087CD2183591E006C621B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80C087CC2183591E006C621B /* GoogleService-Info.plist */; };
 		80C087CF21836B9D006C621B /* LoggedInUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C087CE21836B9D006C621B /* LoggedInUser.swift */; };
-		80C087D3218377BB006C621B /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C087D2218377BB006C621B /* CalendarViewController.swift */; };
-		80C087D521837A19006C621B /* AddCalendarItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C087D421837A19006C621B /* AddCalendarItemViewController.swift */; };
+		80C087D3218377BB006C621B /* AppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C087D2218377BB006C621B /* AppointmentViewController.swift */; };
+		80C087D521837A19006C621B /* AddAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C087D421837A19006C621B /* AddAppointmentViewController.swift */; };
 		A91CCB980A5D0CDEB11272C0 /* Pods_BeyondBirth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA43D5DF6166998B62747883 /* Pods_BeyondBirth.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,8 +60,8 @@
 		80BA7CC7218F967100BF95C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80C087CC2183591E006C621B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		80C087CE21836B9D006C621B /* LoggedInUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUser.swift; sourceTree = "<group>"; };
-		80C087D2218377BB006C621B /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		80C087D421837A19006C621B /* AddCalendarItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCalendarItemViewController.swift; sourceTree = "<group>"; };
+		80C087D2218377BB006C621B /* AppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewController.swift; sourceTree = "<group>"; };
+		80C087D421837A19006C621B /* AddAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentViewController.swift; sourceTree = "<group>"; };
 		9D0C5AF392F06B1C8A21D2AA /* Pods-BeyondBirth-BeyondBirthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeyondBirth-BeyondBirthTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeyondBirth-BeyondBirthTests/Pods-BeyondBirth-BeyondBirthTests.release.xcconfig"; sourceTree = "<group>"; };
 		A7016FBAF14B6CBC92D4E922 /* Pods-BeyondBirth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeyondBirth.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeyondBirth/Pods-BeyondBirth.release.xcconfig"; sourceTree = "<group>"; };
 		DA43D5DF6166998B62747883 /* Pods_BeyondBirth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeyondBirth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +138,7 @@
 				8079EADF2193C0B70021D50F /* JournalViewController.swift */,
 				805E916121AB9D93003D3D9A /* EmotionsMainViewController.swift */,
 				803756A721A9F21C007444A4 /* EmotionViewController.swift */,
-				8079EADC2193B2760021D50F /* Calendar */,
+				8079EADC2193B2760021D50F /* Appointment */,
 				80C087D021837063006C621B /* Login and Registration */,
 				80C087D12183708E006C621B /* Models */,
 				800C4E1E217139090006A54B /* Assets.xcassets */,
@@ -149,13 +149,13 @@
 			path = BeyondBirth;
 			sourceTree = "<group>";
 		};
-		8079EADC2193B2760021D50F /* Calendar */ = {
+		8079EADC2193B2760021D50F /* Appointment */ = {
 			isa = PBXGroup;
 			children = (
-				80C087D2218377BB006C621B /* CalendarViewController.swift */,
-				80C087D421837A19006C621B /* AddCalendarItemViewController.swift */,
+				80C087D2218377BB006C621B /* AppointmentViewController.swift */,
+				80C087D421837A19006C621B /* AddAppointmentViewController.swift */,
 			);
-			path = Calendar;
+			path = Appointment;
 			sourceTree = "<group>";
 		};
 		80BA7CC4218F967100BF95C2 /* BeyondBirthTests */ = {
@@ -393,14 +393,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80C087D3218377BB006C621B /* CalendarViewController.swift in Sources */,
+				80C087D3218377BB006C621B /* AppointmentViewController.swift in Sources */,
 				8079EAE02193C0B80021D50F /* JournalViewController.swift in Sources */,
 				800C4E2A217158550006A54B /* RegisterViewController.swift in Sources */,
 				800C4E1A217139040006A54B /* LoginViewController.swift in Sources */,
 				803A682E2189500800A8B9F9 /* Appointment.swift in Sources */,
 				800C4E18217139040006A54B /* AppDelegate.swift in Sources */,
 				8079EADE2193B5610021D50F /* MenuViewController.swift in Sources */,
-				80C087D521837A19006C621B /* AddCalendarItemViewController.swift in Sources */,
+				80C087D521837A19006C621B /* AddAppointmentViewController.swift in Sources */,
 				8079EADB2193A4290021D50F /* BreathingExercisesViewController.swift in Sources */,
 				805E916221AB9D94003D3D9A /* EmotionsMainViewController.swift in Sources */,
 				804343B2218CCAED0097D8C3 /* TimerViewController.swift in Sources */,

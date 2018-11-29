@@ -22,17 +22,18 @@ class MenuViewController: UIViewController {
     }
     
     func setupViews() {
+        navigationItem.title = "Menu"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         
         view.backgroundColor = .white
         
-        //        view.addSubview(journalButton)
+        // view.addSubview(journalButton)
         view.addSubview(breathingButton)
         view.addSubview(appointmentButton)
         view.addSubview(timerButton)
         view.addSubview(emotionButton)
         
-        //        setupjournal()
+        // setupjournal()
         setupbreathing()
         setupappointment()
         setuptimer()
@@ -68,19 +69,19 @@ class MenuViewController: UIViewController {
         present(LoginViewController(), animated: true, completion: nil)
     }
     
-    @objc func journal() {
-        self.navigationController?.pushViewController(JournalViewController(), animated: true)
-    }
+//    @objc func journal() {
+//        self.navigationController?.pushViewController(JournalViewController(), animated: true)
+//    }
     
+    // creates the BreathingExercisesController for breathing exercises
     @objc func breathing() {
-        // creates the BreathingExercisesController for breathing exercises
         let flowLayout = UICollectionViewFlowLayout()
         let customCollectionViewController = BreathingExercisesViewController(collectionViewLayout: flowLayout)
         self.navigationController?.pushViewController(customCollectionViewController, animated: true)
     }
     
-    @objc func calendar() {
-        self.navigationController?.pushViewController(CalendarViewController(), animated: true)
+    @objc func appointments() {
+        self.navigationController?.pushViewController(AppointmentViewController(), animated: true)
     }
     
     @objc func timer() {
@@ -93,16 +94,16 @@ class MenuViewController: UIViewController {
     
     // MARK: - views
     
-    //    let journalButton: UIButton = {
-    //        let button = UIButton(type: .system)
-    //        button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
-    //        button.setTitle("Journal", for: .normal )
-    //        button.setTitleColor(UIColor.white, for: .normal)
-    //        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-    //        button.translatesAutoresizingMaskIntoConstraints = false
-    //        button.addTarget(self, action: #selector(journal), for: .touchUpInside)
-    //        return button
-    //    }()
+//    let journalButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.backgroundColor = UIColor(r: 8, g: 28, b: 255)
+//        button.setTitle("Journal", for: .normal )
+//        button.setTitleColor(UIColor.white, for: .normal)
+//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(journal), for: .touchUpInside)
+//        return button
+//    }()
     
     let breathingButton: UIButton = {
         let button = UIButton(type: .system)
@@ -122,7 +123,7 @@ class MenuViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(calendar), for: .touchUpInside)
+        button.addTarget(self, action: #selector(appointments), for: .touchUpInside)
         return button
     }()
     
@@ -150,12 +151,12 @@ class MenuViewController: UIViewController {
     
     // MARK: - constraints
     
-    //    func setupjournal() {
-    //        journalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    //        journalButton.bottomAnchor.constraint(equalTo: breathingButton.topAnchor, constant: -12).isActive = true
-    //        journalButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-    //        journalButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-    //    }
+//    func setupjournal() {
+//        journalButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        journalButton.bottomAnchor.constraint(equalTo: breathingButton.topAnchor, constant: -12).isActive = true
+//        journalButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
+//        journalButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//    }
     
     func setupbreathing() {
         breathingButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

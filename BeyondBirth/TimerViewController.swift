@@ -15,11 +15,19 @@ import UIKit
 
 class TimerViewController: UIViewController {
     
+    
     // variables
     var hours = 0
     var minutes = 0
     var seconds = 0
     var timer = Timer()
+    
+    // run
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpViews()
+    }
+    
     
     // play button
     var playButton: UIButton!
@@ -66,8 +74,8 @@ class TimerViewController: UIViewController {
         view.addSubview(resetButton)
     }
     
-    // Timer lable
-    var TimerLable: UILabel = {
+    // timer label
+    var TimerLabel: UILabel = {
         let lb = UILabel()
         lb.frame = CGRect(x: 300, y: 300, width: 350, height: 100)
         lb.textAlignment = .center
@@ -79,20 +87,24 @@ class TimerViewController: UIViewController {
     }()
     
     func timerLB(){
-        view.addSubview(TimerLable)
+        view.addSubview(TimerLabel)
         action()
     }
     
     // calls all views
     func setUpViews(){
+        navigationItem.title = "Timer"
+        
         view.backgroundColor = .white
+        
         startButton()
         stopButton()
         restartButton()
         timerLB()
     }
     
-    // action functions
+    // MARK: - action functions
+    
     // start
     @objc  func start() {
         [timer.invalidate()]
@@ -103,6 +115,7 @@ class TimerViewController: UIViewController {
         print("starting timer")
         
     }
+    
     // stop
     @objc func stop(){
         timer.invalidate()
@@ -116,7 +129,7 @@ class TimerViewController: UIViewController {
         seconds = 0
         minutes = 0
         hours = 0
-        TimerLable.text = ("0:0:0")
+        TimerLabel.text = ("0:0:0")
         // to test if reset action works
         print("resting timer")
     }
@@ -137,12 +150,7 @@ class TimerViewController: UIViewController {
             print("hour")
         }
         
-        TimerLable.text = "\(hours):\(minutes):\(seconds) "
+        TimerLabel.text = "\(hours):\(minutes):\(seconds) "
     }
     
-    // run
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpViews()
-    }
 }

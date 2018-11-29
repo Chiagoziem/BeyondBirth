@@ -12,6 +12,7 @@
 import UIKit
 
 class EmotionsMainViewController: UIViewController {
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,8 @@ class EmotionsMainViewController: UIViewController {
     
     // calls all functions
     func setupViews() {
+        navigationItem.title = "Emotion Menu"
+        
         view.backgroundColor = UIColor.white
         
         view.addSubview(happyButton)

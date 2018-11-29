@@ -11,12 +11,13 @@ import Firebase
 
 class EmotionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    // variables
     var emotionText = String()
-    let cellId = "cellId"
-    let database = Database.database().reference().child("emotionImages")
-    let storage = Storage.storage()
-    var picArray = [UIImage]()
-    var picArrayNames = [String]()
+    let cellId = "cellId" // reuse cell id
+    let database = Database.database().reference().child("emotionImages") // database for retrieving names of emotion images
+    let storage = Storage.storage() // firebase storage variable
+    var picArray = [UIImage]() // array for storing emotion images from firebase as UIImages
+    var picArrayNames = [String]() // array for storing names of emotion images manually
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -27,6 +28,7 @@ class EmotionViewController: UICollectionViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // add title to view based on emotion selected in EmotionsMainViewController
         navigationItem.title = emotionText.capitalized
         
         // collection view configuration
@@ -34,6 +36,7 @@ class EmotionViewController: UICollectionViewController, UICollectionViewDelegat
         collectionView?.register(EmotionPhotoCell.self, forCellWithReuseIdentifier: cellId)
     }
     
+    // add data to cells
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! EmotionPhotoCell
         
@@ -45,15 +48,18 @@ class EmotionViewController: UICollectionViewController, UICollectionViewDelegat
         return cell
     }
     
+    // set amount of cells shown
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return picArrayNames.count
     }
     
+    // set size for cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.width)
     }
     
     // couldn't figure out how to make asynchronous
+    // downloads images from firebase
     func downloadImagesFromFirebase() {
         var folderChild = ""
         
@@ -66,16 +72,24 @@ class EmotionViewController: UICollectionViewController, UICollectionViewDelegat
             folderChild = ""
         }
         
+        // access database of specific emotion
         database.child(folderChild).observe(.childAdded, with: { (snapshot) in
+            // get url of image
             let downloadURL = snapshot.value as! String
+            // use url to retrieve image from storage
             let storageRef = self.storage.reference(forURL: downloadURL)
+            // turn pic into type Data
             storageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
+                // turn pic of type Data into UIImage
                 let pic = UIImage(data: data!)
+                // add to picArray
                 self.picArray.append(pic!)
             }
         })
     }
     
+    
+    // manually gets emotion images from assets
     func manuallyGetImagesFromAssets() {
         switch emotionText {
         case "sad":
@@ -106,12 +120,14 @@ class EmotionViewController: UICollectionViewController, UICollectionViewDelegat
     
 }
 
+// cell configuration
 class EmotionPhotoCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpViews()
     }
     
+    // creates image view for emotion images
     var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -119,9 +135,12 @@ class EmotionPhotoCell: UICollectionViewCell {
         return imageView
     }()
     
+    // sets up the views within the cell
     func setUpViews(){
+        // add subview
         addSubview(imageView)
         
+        // constraints
         imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         imageView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true

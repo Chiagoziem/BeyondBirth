@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AddCalendarItemViewController: UIViewController {
+class AddAppointmentItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +67,8 @@ class AddCalendarItemViewController: UIViewController {
     }
     
     func setupViews() {
+        navigationItem.title = "Create Appointment"
+        
         view.backgroundColor = .white
         
         view.addSubview(nameTextField)
@@ -84,7 +86,7 @@ class AddCalendarItemViewController: UIViewController {
         datePickerTextField.text = dateFormatter.string(from: Date())
         
         datePickerTextField.inputView = datePicker
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddCalendarItemViewController.tapToLeave(gestureRecognizer:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddAppointmentItemViewController.tapToLeave(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
     }
     
@@ -151,7 +153,7 @@ class AddCalendarItemViewController: UIViewController {
     lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .dateAndTime
-        datePicker.addTarget(self, action: #selector(AddCalendarItemViewController.dateSelected(datePicker:)), for: .valueChanged)
+        datePicker.addTarget(self, action: #selector(AddAppointmentItemViewController.dateSelected(datePicker:)), for: .valueChanged)
         return datePicker
     }()
     
