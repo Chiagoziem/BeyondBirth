@@ -1,10 +1,3 @@
-//
-//  UpdateItemViewController.swift
-//  CoreDataExample
-//
-//  Created by Farhan Syed on 4/16/17.
-//  Copyright © 2017 Farhan Syed. All rights reserved.
-//
 
 import UIKit
 
